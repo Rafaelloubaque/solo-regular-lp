@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import { sendLandingLead } from "@/lib/crm";
 import {
   Select,
   SelectContent,
@@ -25,19 +26,62 @@ const PROPERTY_TYPES = [
 
 export function ContactForm() {
   const [propertyType, setPropertyType] = useState("");
+  const [lgpdConsent, setLgpdConsent] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    // Versão visual: ainda não envia/armazena dados.
-    toast.success("Solicitação recebida!", {
-      description: "Em breve um especialista entrará em contato. Você também pode falar agora pelo WhatsApp.",
-    });
-    e.currentTarget.reset();
-    setPropertyType("");
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    if (!propertyType) {
+      toast.error("Selecione o tipo de imóvel.");
+      return;
+    }
+
+    if (!lgpdConsent) {
+      toast.error("Aceite a politica de privacidade para enviar.");
+      return;
+    }
+
+    setIsSubmitting(true);
+    try {
+      await sendLandingLead({
+        name: String(formData.get("nome") || ""),
+        city: String(formData.get("cidade") || ""),
+        phone: String(formData.get("telefone") || ""),
+        email: String(formData.get("email") || ""),
+        propertyType,
+        description: String(formData.get("descricao") || ""),
+        website: String(formData.get("website") || ""),
+        lgpdConsent,
+      });
+
+      toast.success("Solicitação recebida!", {
+        description:
+          "Em breve um especialista entrará em contato. Você também pode falar agora pelo WhatsApp.",
+      });
+      form.reset();
+      setPropertyType("");
+      setLgpdConsent(false);
+    } catch {
+      toast.error("Nao foi possivel enviar agora.", {
+        description: "Tente novamente em alguns instantes ou fale pelo WhatsApp.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
+      <input
+        name="website"
+        tabIndex={-1}
+        autoComplete="off"
+        className="hidden"
+        aria-hidden="true"
+      />
       <div className="grid gap-5 sm:grid-cols-2">
         <div className="space-y-2">
           <Label htmlFor="nome">Nome</Label>
@@ -54,6 +98,13 @@ export function ContactForm() {
           <Label htmlFor="telefone">Telefone</Label>
           <Input id="telefone" name="telefone" type="tel" required placeholder="(11) 90000-0000" />
         </div>
+        <div className="space-y-2">
+          <Label htmlFor="email">E-mail</Label>
+          <Input id="email" name="email" type="email" placeholder="voce@email.com" />
+        </div>
+      </div>
+
+      <div className="grid gap-5 sm:grid-cols-2">
         <div className="space-y-2">
           <Label htmlFor="tipo">Tipo de imóvel</Label>
           <Select value={propertyType} onValueChange={setPropertyType}>
@@ -81,9 +132,22 @@ export function ContactForm() {
         />
       </div>
 
-      <Button type="submit" size="lg" className="w-full">
+      <label className="flex items-start gap-3 rounded-2xl border border-border/70 bg-background/70 p-4 text-sm text-muted-foreground">
+        <input
+          type="checkbox"
+          checked={lgpdConsent}
+          onChange={(event) => setLgpdConsent(event.target.checked)}
+          className="mt-1 size-4 rounded border-input accent-primary"
+        />
+        <span>
+          Autorizo a Solo Regular a entrar em contato e tratar meus dados conforme a politica de
+          privacidade.
+        </span>
+      </label>
+
+      <Button type="submit" size="lg" className="w-full" disabled={isSubmitting}>
         <Send className="size-4" />
-        Solicitar Análise Gratuita
+        {isSubmitting ? "Enviando..." : "Solicitar Análise Gratuita"}
       </Button>
     </form>
   );
