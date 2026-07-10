@@ -1,0 +1,140 @@
+import { Link } from "@tanstack/react-router";
+import { useRef } from "react";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { MessageCircle, ArrowRight, ShieldCheck, MapPin, Sparkles } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { CONTACT } from "@/lib/site-data";
+import heroTopo from "@/assets/hero-topo.jpg";
+
+const STATS = [
+  { value: "+15", label: "anos de experiência" },
+  { value: "6", label: "cidades atendidas" },
+  { value: "100%", label: "gestão integrada" },
+];
+
+export function Hero() {
+  const ref = useRef<HTMLDivElement>(null);
+  const reduce = useReducedMotion();
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
+  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", reduce ? "0%" : "18%"]);
+  const contentY = useTransform(scrollYProgress, [0, 1], ["0%", reduce ? "0%" : "-8%"]);
+
+  return (
+    <section ref={ref} className="relative isolate overflow-hidden bg-[#06171a] text-white">
+      {/* Imagem topográfica de fundo com parallax */}
+      <motion.img
+        src={heroTopo}
+        alt="Mapa topográfico representando território e georreferenciamento"
+        style={{ y: bgY }}
+        width={1600}
+        height={1200}
+        className="pointer-events-none absolute inset-0 -z-10 h-[118%] w-full object-cover opacity-70"
+      />
+      {/* Gradientes / iluminação */}
+      <div
+        className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-[#06171a]/60 via-[#06171a]/70 to-[#06171a]"
+        aria-hidden="true"
+      />
+      <div
+        className="pointer-events-none absolute -left-24 top-1/4 -z-10 size-[32rem] rounded-full bg-primary/25 blur-[120px] animate-aurora"
+        aria-hidden="true"
+      />
+
+      <motion.div
+        style={{ y: contentY }}
+        className="relative mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8 lg:py-36"
+      >
+        <div className="max-w-3xl">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.15em] text-white/85 backdrop-blur-sm"
+          >
+            <ShieldCheck className="size-3.5 text-gold" />
+            Regularização imobiliária & fundiária
+          </motion.div>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
+            className="font-serif text-4xl leading-[1.05] text-white sm:text-5xl lg:text-6xl"
+          >
+            Regularize seu imóvel.
+            <span className="mt-1 block bg-gradient-to-r from-primary via-teal-300 to-gold bg-clip-text text-transparent">
+              Valorize seu patrimônio.
+            </span>
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
+            className="mt-6 max-w-xl text-lg leading-relaxed text-white/80"
+          >
+            Especialistas em Regularização Fundiária, REURB, Usucapião Extrajudicial e
+            Desenvolvimento Urbano. Resolvemos casos complexos de documentação de forma simples e
+            segura.
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
+            className="mt-9 flex flex-col gap-3 sm:flex-row"
+          >
+            <Button asChild size="lg" className="glow-primary">
+              <a href={CONTACT.whatsappUrl} target="_blank" rel="noopener noreferrer">
+                <MessageCircle className="size-4" />
+                Falar no WhatsApp
+              </a>
+            </Button>
+            <Button
+              asChild
+              size="lg"
+              variant="outline"
+              className="border-white/25 bg-white/5 text-white backdrop-blur-sm hover:bg-white/10 hover:text-white"
+            >
+              <Link to="/contato">
+                Solicitar Análise
+                <ArrowRight className="size-4" />
+              </Link>
+            </Button>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="mt-12 grid max-w-xl grid-cols-3 gap-4"
+          >
+            {STATS.map((s) => (
+              <div
+                key={s.label}
+                className="glass-dark rounded-2xl px-4 py-4 text-center"
+              >
+                <p className="font-serif text-2xl font-semibold text-white sm:text-3xl">{s.value}</p>
+                <p className="mt-1 text-[0.7rem] leading-tight text-white/65">{s.label}</p>
+              </div>
+            ))}
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.42 }}
+            className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-white/70"
+          >
+            <span className="inline-flex items-center gap-1.5">
+              <MapPin className="size-4 text-gold" /> São Roque e região
+            </span>
+            <span className="inline-flex items-center gap-1.5">
+              <Sparkles className="size-4 text-gold" /> Análise inicial gratuita
+            </span>
+          </motion.div>
+        </div>
+      </motion.div>
+    </section>
+  );
+}

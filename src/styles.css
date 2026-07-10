@@ -1,0 +1,306 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Solo Regular — Design System
+ * Brand: verde-petróleo (teal) institucional, premium e confiável.
+ * Tokens semânticos definidos em :root, mapeados em @theme inline.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+
+  /* Tokens de marca extras */
+  --color-deep: var(--deep);
+  --color-deep-foreground: var(--deep-foreground);
+  --color-gold: var(--gold);
+  --color-gold-foreground: var(--gold-foreground);
+  --color-sand: var(--sand);
+
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --font-serif: "Fraunces", Georgia, serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+}
+
+:root {
+  --radius: 0.5rem;
+
+  --background: oklch(0.974 0.006 95);
+  --foreground: oklch(0.26 0.018 215);
+
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.26 0.018 215);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.26 0.018 215);
+
+  --primary: oklch(0.56 0.072 195);
+  --primary-foreground: oklch(0.985 0.005 95);
+
+  --secondary: oklch(0.95 0.012 190);
+  --secondary-foreground: oklch(0.32 0.05 200);
+
+  --muted: oklch(0.95 0.008 95);
+  --muted-foreground: oklch(0.5 0.02 210);
+
+  --accent: oklch(0.93 0.02 190);
+  --accent-foreground: oklch(0.32 0.05 200);
+
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.985 0.005 95);
+
+  --border: oklch(0.9 0.012 190);
+  --input: oklch(0.9 0.012 190);
+  --ring: oklch(0.56 0.072 195);
+
+  /* Marca */
+  --deep: oklch(0.36 0.05 200);
+  --deep-foreground: oklch(0.97 0.01 95);
+  --gold: oklch(0.74 0.1 88);
+  --gold-foreground: oklch(0.26 0.018 215);
+  --sand: oklch(0.96 0.012 90);
+
+  --chart-1: oklch(0.56 0.072 195);
+  --chart-2: oklch(0.36 0.05 200);
+  --chart-3: oklch(0.74 0.1 88);
+  --chart-4: oklch(0.65 0.06 190);
+  --chart-5: oklch(0.45 0.06 198);
+
+  --sidebar: oklch(0.985 0.005 95);
+  --sidebar-foreground: oklch(0.26 0.018 215);
+  --sidebar-primary: oklch(0.56 0.072 195);
+  --sidebar-primary-foreground: oklch(0.985 0.005 95);
+  --sidebar-accent: oklch(0.95 0.012 190);
+  --sidebar-accent-foreground: oklch(0.32 0.05 200);
+  --sidebar-border: oklch(0.9 0.012 190);
+  --sidebar-ring: oklch(0.56 0.072 195);
+}
+
+.dark {
+  --background: oklch(0.22 0.025 210);
+  --foreground: oklch(0.96 0.008 95);
+  --card: oklch(0.27 0.03 208);
+  --card-foreground: oklch(0.96 0.008 95);
+  --popover: oklch(0.27 0.03 208);
+  --popover-foreground: oklch(0.96 0.008 95);
+  --primary: oklch(0.66 0.08 192);
+  --primary-foreground: oklch(0.2 0.02 210);
+  --secondary: oklch(0.32 0.03 205);
+  --secondary-foreground: oklch(0.96 0.008 95);
+  --muted: oklch(0.32 0.03 205);
+  --muted-foreground: oklch(0.72 0.02 200);
+  --accent: oklch(0.34 0.04 200);
+  --accent-foreground: oklch(0.96 0.008 95);
+  --destructive: oklch(0.704 0.191 22.216);
+  --destructive-foreground: oklch(0.96 0.008 95);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.66 0.08 192);
+  --deep: oklch(0.3 0.04 202);
+  --deep-foreground: oklch(0.96 0.008 95);
+  --gold: oklch(0.78 0.1 88);
+  --gold-foreground: oklch(0.2 0.02 210);
+  --sand: oklch(0.27 0.03 208);
+  --chart-1: oklch(0.66 0.08 192);
+  --chart-2: oklch(0.5 0.05 200);
+  --chart-3: oklch(0.78 0.1 88);
+  --chart-4: oklch(0.6 0.06 190);
+  --chart-5: oklch(0.55 0.06 198);
+  --sidebar: oklch(0.22 0.025 210);
+  --sidebar-foreground: oklch(0.96 0.008 95);
+  --sidebar-primary: oklch(0.66 0.08 192);
+  --sidebar-primary-foreground: oklch(0.2 0.02 210);
+  --sidebar-accent: oklch(0.32 0.03 205);
+  --sidebar-accent-foreground: oklch(0.96 0.008 95);
+  --sidebar-border: oklch(1 0 0 / 12%);
+  --sidebar-ring: oklch(0.66 0.08 192);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, h5 {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+}
+
+/* Microanimações suaves de entrada */
+@keyframes solo-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@utility animate-fade-up {
+  animation: solo-fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Grafismo de planta urbanística (grid sutil) */
+@utility plan-grid {
+  background-image:
+    linear-gradient(to right, color-mix(in oklab, var(--color-primary) 8%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in oklab, var(--color-primary) 8%, transparent) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* ============================================================
+ * Premium / tech UI utilities (Stripe / Linear / Vercel vibe)
+ * ============================================================ */
+
+/* Gradiente de texto da marca */
+@utility text-gradient {
+  background-image: linear-gradient(
+    100deg,
+    var(--color-primary) 0%,
+    color-mix(in oklab, var(--color-primary) 70%, var(--color-gold)) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Glass card claro */
+@utility glass-card {
+  background: color-mix(in oklab, var(--color-card) 72%, transparent);
+  backdrop-filter: blur(16px) saturate(150%);
+  border: 1px solid color-mix(in oklab, var(--color-border) 60%, transparent);
+  box-shadow:
+    0 1px 0 0 color-mix(in oklab, white 55%, transparent) inset,
+    0 20px 40px -24px color-mix(in oklab, var(--color-primary) 40%, transparent);
+}
+
+/* Glass card escuro (para seções deep) */
+@utility glass-dark {
+  background: color-mix(in oklab, white 6%, transparent);
+  backdrop-filter: blur(14px) saturate(140%);
+  border: 1px solid color-mix(in oklab, white 12%, transparent);
+}
+
+/* Halo/brilho suave atrás de elementos */
+@utility glow-primary {
+  box-shadow: 0 0 60px -12px color-mix(in oklab, var(--color-primary) 55%, transparent);
+}
+
+/* Sombra elegante de elevação */
+@utility shadow-elegant {
+  box-shadow: 0 24px 60px -28px color-mix(in oklab, var(--color-primary) 45%, transparent);
+}
+
+/* Borda com gradiente (para cards premium em destaque) */
+@utility ring-gradient {
+  border: 1px solid transparent;
+  background:
+    linear-gradient(var(--color-card), var(--color-card)) padding-box,
+    linear-gradient(135deg, color-mix(in oklab, var(--color-primary) 60%, transparent), color-mix(in oklab, var(--color-gold) 50%, transparent)) border-box;
+}
+
+/* Máscara de fade nas bordas */
+@utility mask-fade-x {
+  -webkit-mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+}
+
+/* Curvas de nível / topografia via gradientes radiais */
+@utility topo-rings {
+  background-image:
+    repeating-radial-gradient(
+      circle at 30% 40%,
+      color-mix(in oklab, var(--color-primary) 10%, transparent) 0,
+      color-mix(in oklab, var(--color-primary) 10%, transparent) 1px,
+      transparent 1px,
+      transparent 22px
+    ),
+    repeating-radial-gradient(
+      circle at 78% 75%,
+      color-mix(in oklab, var(--color-primary) 8%, transparent) 0,
+      color-mix(in oklab, var(--color-primary) 8%, transparent) 1px,
+      transparent 1px,
+      transparent 28px
+    );
+}
+
+@keyframes solo-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@utility animate-float {
+  animation: solo-float 6s ease-in-out infinite;
+}
+
+@keyframes solo-aurora {
+  0% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.55; }
+  50% { transform: translate3d(4%, -3%, 0) scale(1.12); opacity: 0.85; }
+  100% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.55; }
+}
+
+@utility animate-aurora {
+  animation: solo-aurora 14s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
