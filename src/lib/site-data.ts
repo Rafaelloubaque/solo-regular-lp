@@ -31,15 +31,15 @@ import {
 } from "lucide-react";
 
 export const CONTACT = {
-  whatsappDisplay: "(11) 0000-0000",
-  whatsappNumber: "5511000000000", // TODO: substituir pelo número oficial
+  whatsappDisplay: "+55 11 94764-3922",
+  whatsappNumber: "5511947643922",
   whatsappUrl:
-    "https://wa.me/5511000000000?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20uma%20an%C3%A1lise%20do%20meu%20im%C3%B3vel.",
-  phone: "(11) 0000-0000",
-  email: "contato@sololregular.com.br", // TODO: substituir
+    "https://wa.me/5511947643922?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20uma%20an%C3%A1lise%20do%20meu%20im%C3%B3vel.",
+  phone: "+55 11 94764-3922",
+  email: "contato@soloregular.com.br",
   address: "São Roque — SP", // TODO: endereço completo
-  instagram: "https://instagram.com/sololregular",
-  facebook: "https://facebook.com/sololregular",
+  instagram: "https://www.instagram.com/soloregular/",
+  facebook: "",
 };
 
 export const AREAS = [

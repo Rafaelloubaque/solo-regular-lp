@@ -4,7 +4,7 @@ import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion
 import { MessageCircle, ArrowRight, ShieldCheck, MapPin, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CONTACT } from "@/lib/site-data";
-import heroTopo from "@/assets/hero-topo.jpg";
+import heroBg from "@/assets/2[[ (1).png";
 
 const STATS = [
   { value: "+15", label: "anos de experiência" },
@@ -23,7 +23,7 @@ export function Hero() {
     <section ref={ref} className="relative isolate overflow-hidden bg-[#06171a] text-white">
       {/* Imagem topográfica de fundo com parallax */}
       <motion.img
-        src={heroTopo}
+        src={heroBg}
         alt="Mapa topográfico representando território e georreferenciamento"
         style={{ y: bgY }}
         width={1600}

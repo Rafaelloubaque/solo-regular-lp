@@ -80,15 +80,17 @@ export function SiteFooter() {
               >
                 <Instagram className="size-4" />
               </a>
-              <a
-                href={CONTACT.facebook}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Facebook"
-                className="inline-flex size-9 items-center justify-center rounded-full border border-white/20 transition-colors hover:bg-white/10"
-              >
-                <Facebook className="size-4" />
-              </a>
+              {CONTACT.facebook && (
+                <a
+                  href={CONTACT.facebook}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Facebook"
+                  className="inline-flex size-9 items-center justify-center rounded-full border border-white/20 transition-colors hover:bg-white/10"
+                >
+                  <Facebook className="size-4" />
+                </a>
+              )}
             </div>
           </div>
         </div>

@@ -15,6 +15,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { WhatsAppFab } from "@/components/WhatsAppFab";
+import { CONTACT } from "@/lib/site-data";
 
 function NotFoundComponent() {
   return (
@@ -130,6 +131,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
             addressRegion: "SP",
             addressCountry: "BR",
           },
+          email: CONTACT.email,
+          telephone: CONTACT.phone,
+          sameAs: [CONTACT.instagram],
         }),
       },
     ],

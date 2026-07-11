@@ -96,7 +96,7 @@ export function ContactForm() {
       <div className="grid gap-5 sm:grid-cols-2">
         <div className="space-y-2">
           <Label htmlFor="telefone">Telefone</Label>
-          <Input id="telefone" name="telefone" type="tel" required placeholder="(11) 90000-0000" />
+          <Input id="telefone" name="telefone" type="tel" required placeholder="+55 11 94764-3922" />
         </div>
         <div className="space-y-2">
           <Label htmlFor="email">E-mail</Label>
