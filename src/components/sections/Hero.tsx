@@ -35,10 +35,6 @@ export function Hero() {
         className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-[#06171a]/60 via-[#06171a]/70 to-[#06171a]"
         aria-hidden="true"
       />
-      <div
-        className="pointer-events-none absolute -left-24 top-1/4 -z-10 size-[32rem] rounded-full bg-primary/25 blur-[120px] animate-aurora"
-        aria-hidden="true"
-      />
 
       <motion.div
         style={{ y: contentY }}

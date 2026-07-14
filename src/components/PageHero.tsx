@@ -30,10 +30,6 @@ export function PageHero({ eyebrow, title, description, breadcrumb }: PageHeroPr
         className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-[#06171a]/80 via-[#06171a]/85 to-[#06171a]"
         aria-hidden="true"
       />
-      <div
-        className="pointer-events-none absolute -left-24 top-0 -z-10 size-96 rounded-full bg-primary/25 blur-[120px]"
-        aria-hidden="true"
-      />
       <div className="relative mx-auto max-w-4xl px-4 py-20 text-center sm:px-6 lg:py-24 lg:px-8">
         {breadcrumb && (
           <nav aria-label="Breadcrumb" className="mb-5 flex justify-center">

@@ -19,11 +19,6 @@ export function HowItWorks() {
         />
 
         <div className="relative mt-16">
-          {/* linha de conexão */}
-          <div
-            className="absolute left-0 right-0 top-9 hidden h-px bg-gradient-to-r from-transparent via-white/25 to-transparent lg:block"
-            aria-hidden="true"
-          />
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-5">
             {STEPS.map((s, i) => (
               <motion.div

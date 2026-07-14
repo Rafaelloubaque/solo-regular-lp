@@ -34,7 +34,7 @@ const SECTIONS: { title: string; body: string[] }[] = [
   {
     title: "2. Quais dados coletamos",
     body: [
-      "Coletamos apenas os dados que você nos fornece voluntariamente ao preencher o formulário de contato ou ao nos chamar pelo WhatsApp, como nome, cidade, telefone, tipo de imóvel e a descrição da sua situação.",
+      "Coletamos apenas os dados que você nos fornece voluntariamente ao preencher o formulário de contato ou ao nos chamar pelo WhatsApp, como nome, cidade, telefone, data de nascimento, serviço de interesse e a descrição da sua situação.",
       "Não coletamos dados sensíveis e não realizamos venda de dados a terceiros.",
     ],
   },

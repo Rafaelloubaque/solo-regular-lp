@@ -6,6 +6,8 @@ export interface LandingLeadPayload {
   city: string;
   phone: string;
   email?: string;
+  birthDate?: string;
+  service?: string;
   propertyType?: string;
   description?: string;
   lgpdConsent: boolean;

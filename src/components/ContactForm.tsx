@@ -12,20 +12,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { SERVICES } from "@/lib/site-data";
 import { Send } from "lucide-react";
 
-const PROPERTY_TYPES = [
-  "Casa",
-  "Apartamento",
-  "Terreno / Lote",
-  "Imóvel rural",
-  "Imóvel comercial",
-  "Loteamento",
-  "Outro",
-];
-
 export function ContactForm() {
-  const [propertyType, setPropertyType] = useState("");
+  const [service, setService] = useState("");
   const [lgpdConsent, setLgpdConsent] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -34,8 +25,8 @@ export function ContactForm() {
     const form = e.currentTarget;
     const formData = new FormData(form);
 
-    if (!propertyType) {
-      toast.error("Selecione o tipo de imóvel.");
+    if (!service) {
+      toast.error("Selecione o serviço.");
       return;
     }
 
@@ -51,7 +42,8 @@ export function ContactForm() {
         city: String(formData.get("cidade") || ""),
         phone: String(formData.get("telefone") || ""),
         email: String(formData.get("email") || ""),
-        propertyType,
+        birthDate: String(formData.get("dataNascimento") || ""),
+        service,
         description: String(formData.get("descricao") || ""),
         website: String(formData.get("website") || ""),
         lgpdConsent,
@@ -62,7 +54,7 @@ export function ContactForm() {
           "Em breve um especialista entrará em contato. Você também pode falar agora pelo WhatsApp.",
       });
       form.reset();
-      setPropertyType("");
+      setService("");
       setLgpdConsent(false);
     } catch {
       toast.error("Nao foi possivel enviar agora.", {
@@ -106,15 +98,19 @@ export function ContactForm() {
 
       <div className="grid gap-5 sm:grid-cols-2">
         <div className="space-y-2">
-          <Label htmlFor="tipo">Tipo de imóvel</Label>
-          <Select value={propertyType} onValueChange={setPropertyType}>
-            <SelectTrigger id="tipo" className="w-full">
-              <SelectValue placeholder="Selecione" />
+          <Label htmlFor="dataNascimento">Data de nascimento</Label>
+          <Input id="dataNascimento" name="dataNascimento" type="date" />
+        </div>
+        <div className="space-y-2">
+          <Label htmlFor="servico">Serviço</Label>
+          <Select value={service} onValueChange={setService}>
+            <SelectTrigger id="servico" className="w-full">
+              <SelectValue placeholder="Selecione o serviço" />
             </SelectTrigger>
             <SelectContent>
-              {PROPERTY_TYPES.map((t) => (
-                <SelectItem key={t} value={t}>
-                  {t}
+              {SERVICES.map((item) => (
+                <SelectItem key={item.slug} value={item.title}>
+                  {item.title}
                 </SelectItem>
               ))}
             </SelectContent>

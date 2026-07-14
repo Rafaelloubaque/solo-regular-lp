@@ -12,8 +12,7 @@ export function ContactCta() {
       />
       <div className="relative mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
         <div>
-          <div className="mb-3 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-gold">
-            <span className="h-px w-6 bg-gold/60" />
+          <div className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-gold">
             Fale com a Solo Regular
           </div>
           <h2 className="font-serif text-3xl leading-tight sm:text-4xl">

@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import aerea from "@/assets/aerea.jpg.asset.json";
+import aboutImage from "@/assets/e6532291-9f2c-47be-a8f6-f980443594d9.png";
 
 export function AboutPreview() {
   return (
@@ -17,12 +17,12 @@ export function AboutPreview() {
           <div className="relative">
             <div className="overflow-hidden rounded-3xl border border-border shadow-elegant">
               <img
-                src={aerea.url}
-                alt="Vista aérea de área urbana regularizada"
+                src={aboutImage}
+                alt="Fachada da Solo Regular"
                 width={920}
                 height={520}
                 loading="lazy"
-                className="aspect-[16/10] w-full object-cover"
+                className="aspect-[16/10] w-full object-cover object-center"
               />
             </div>
             <div className="glass-card absolute -bottom-6 -right-2 hidden animate-float rounded-2xl px-6 py-4 sm:block">
@@ -38,8 +38,7 @@ export function AboutPreview() {
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
         >
-          <div className="mb-3 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-primary">
-            <span className="h-px w-6 bg-primary/50" />
+          <div className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-primary">
             Quem somos
           </div>
           <h2 className="font-serif text-3xl leading-tight text-deep sm:text-4xl">

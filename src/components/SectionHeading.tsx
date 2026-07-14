@@ -29,12 +29,10 @@ export function SectionHeading({
       {eyebrow && (
         <div
           className={cn(
-            "mb-3 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em]",
-            align === "center" && "justify-center",
+            "mb-3 text-xs font-semibold uppercase tracking-[0.2em]",
             invert ? "text-gold" : "text-primary",
           )}
         >
-          <span className={cn("h-px w-6", invert ? "bg-gold/60" : "bg-primary/50")} />
           {eyebrow}
         </div>
       )}
