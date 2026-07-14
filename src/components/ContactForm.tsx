@@ -15,8 +15,19 @@ import {
 import { SERVICES } from "@/lib/site-data";
 import { Send } from "lucide-react";
 
+function maskPhone(value: string) {
+  let digits = value.replace(/\D/g, "");
+  if (digits.length > 11 && digits.startsWith("55")) digits = digits.slice(2);
+  digits = digits.slice(0, 11);
+  if (digits.length <= 2) return digits;
+  if (digits.length <= 6) return `(${digits.slice(0, 2)}) ${digits.slice(2)}`;
+  if (digits.length <= 10) return `(${digits.slice(0, 2)}) ${digits.slice(2, 6)}-${digits.slice(6)}`;
+  return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7)}`;
+}
+
 export function ContactForm() {
   const [service, setService] = useState("");
+  const [phone, setPhone] = useState("");
   const [lgpdConsent, setLgpdConsent] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -54,6 +65,7 @@ export function ContactForm() {
           "Em breve um especialista entrará em contato. Você também pode falar agora pelo WhatsApp.",
       });
       form.reset();
+      setPhone("");
       setService("");
       setLgpdConsent(false);
     } catch {
@@ -88,7 +100,16 @@ export function ContactForm() {
       <div className="grid gap-5 sm:grid-cols-2">
         <div className="space-y-2">
           <Label htmlFor="telefone">Telefone</Label>
-          <Input id="telefone" name="telefone" type="tel" required placeholder="+55 11 94764-3922" />
+          <Input
+            id="telefone"
+            name="telefone"
+            type="tel"
+            inputMode="tel"
+            required
+            value={phone}
+            onChange={(event) => setPhone(maskPhone(event.target.value))}
+            placeholder="(11) 94764-3922"
+          />
         </div>
         <div className="space-y-2">
           <Label htmlFor="email">E-mail</Label>
