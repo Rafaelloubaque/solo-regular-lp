@@ -5,8 +5,8 @@ import { ContactCta } from "@/components/sections/ContactCta";
 import { Reveal } from "@/components/Reveal";
 import { Compass, Scale } from "lucide-react";
 import { TIMELINE } from "@/lib/site-data";
-import adriana from "@/assets/adriana.jpg.asset.json";
-import ronaldo from "@/assets/ronaldo.jpg.asset.json";
+import adriana from "@/assets/adriana.jpeg";
+import ronaldo from "@/assets/ronaldo.jpeg";
 
 export const Route = createFileRoute("/sobre")({
   head: () => ({
@@ -20,8 +20,7 @@ export const Route = createFileRoute("/sobre")({
       { property: "og:title", content: "Sobre a Solo Regular" },
       {
         property: "og:description",
-        content:
-          "Arquitetura, urbanismo, direito e expertise registral em uma única gestão.",
+        content: "Arquitetura, urbanismo, direito e expertise registral em uma única gestão.",
       },
       { property: "og:url", content: "/sobre" },
     ],
@@ -34,14 +33,16 @@ const PARTNERS = [
   {
     name: "Adriana Cruz",
     role: "Arquiteta e Urbanista",
-    photo: adriana.url,
+    photo: adriana,
+    photoPosition: "center 36%",
     icon: Compass,
     bio: "Responsável pela visão urbanística e técnica dos projetos, Adriana une planejamento, levantamento e adequação às normas para que cada regularização tenha base sólida e definitiva.",
   },
   {
     name: "Ronaldo Xavier Alves",
     role: "Especialista em regularização imobiliária e relacionamento institucional",
-    photo: ronaldo.url,
+    photo: ronaldo,
+    photoPosition: "center 28%",
     icon: Scale,
     bio: "À frente do relacionamento com cartórios, prefeituras e órgãos públicos, Ronaldo conduz as tratativas institucionais e garante a fluidez dos processos mais complexos.",
   },
@@ -68,13 +69,15 @@ function SobrePage() {
               </p>
               <p>
                 Enquanto advogados, engenheiros, topógrafos e despachantes costumam trabalhar
-                isoladamente, nós entregamos uma <span className="font-medium text-deep">solução completa</span>,
-                com gestão única do início ao fim do processo.
+                isoladamente, nós entregamos uma{" "}
+                <span className="font-medium text-deep">solução completa</span>, com gestão única do
+                início ao fim do processo.
               </p>
               <p>
-                São mais de 15 anos de experiência aplicados em casos complexos — documentação antiga,
-                contratos de gaveta, divergências registrais e loteamentos irregulares — sempre com o
-                mesmo objetivo: dar segurança jurídica e valorizar o patrimônio dos nossos clientes.
+                São mais de 15 anos de experiência aplicados em casos complexos — documentação
+                antiga, contratos de gaveta, divergências registrais e loteamentos irregulares —
+                sempre com o mesmo objetivo: dar segurança jurídica e valorizar o patrimônio dos
+                nossos clientes.
               </p>
             </div>
           </Reveal>
@@ -102,7 +105,6 @@ function SobrePage() {
         </div>
       </section>
 
-
       <section className="bg-sand py-20 lg:py-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-14 text-center">
@@ -121,7 +123,8 @@ function SobrePage() {
                     width={320}
                     height={400}
                     loading="lazy"
-                    className="h-64 w-full object-cover object-top sm:h-auto sm:w-44"
+                    style={{ objectPosition: p.photoPosition }}
+                    className="h-72 w-full object-cover sm:h-auto sm:w-48"
                   />
                   <div className="flex flex-1 flex-col p-6">
                     <div className="flex size-11 items-center justify-center rounded-xl bg-primary/10 text-primary">
