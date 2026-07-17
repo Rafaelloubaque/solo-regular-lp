@@ -13,11 +13,11 @@ import { Route as SobreRouteImport } from './routes/sobre'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ServicosRouteImport } from './routes/servicos'
 import { Route as PrivacidadeRouteImport } from './routes/privacidade'
-import { Route as LinkRouteImport } from './routes/link'
 import { Route as ContatoRouteImport } from './routes/contato'
 import { Route as CasosRouteImport } from './routes/casos'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
+import { Route as LinkIndexRouteImport } from './routes/Link.index'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 
 const SobreRoute = SobreRouteImport.update({
@@ -40,11 +40,6 @@ const PrivacidadeRoute = PrivacidadeRouteImport.update({
   path: '/privacidade',
   getParentRoute: () => rootRouteImport,
 } as any)
-const LinkRoute = LinkRouteImport.update({
-  id: '/link',
-  path: '/link',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const ContatoRoute = ContatoRouteImport.update({
   id: '/contato',
   path: '/contato',
@@ -65,6 +60,11 @@ const BlogIndexRoute = BlogIndexRouteImport.update({
   path: '/blog/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LinkIndexRoute = LinkIndexRouteImport.update({
+  id: '/Link/',
+  path: '/Link/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BlogSlugRoute = BlogSlugRouteImport.update({
   id: '/blog/$slug',
   path: '/blog/$slug',
@@ -75,24 +75,24 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/casos': typeof CasosRoute
   '/contato': typeof ContatoRoute
-  '/link': typeof LinkRoute
   '/privacidade': typeof PrivacidadeRoute
   '/servicos': typeof ServicosRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sobre': typeof SobreRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/Link/': typeof LinkIndexRoute
   '/blog/': typeof BlogIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/casos': typeof CasosRoute
   '/contato': typeof ContatoRoute
-  '/link': typeof LinkRoute
   '/privacidade': typeof PrivacidadeRoute
   '/servicos': typeof ServicosRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sobre': typeof SobreRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/Link': typeof LinkIndexRoute
   '/blog': typeof BlogIndexRoute
 }
 export interface FileRoutesById {
@@ -100,12 +100,12 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/casos': typeof CasosRoute
   '/contato': typeof ContatoRoute
-  '/link': typeof LinkRoute
   '/privacidade': typeof PrivacidadeRoute
   '/servicos': typeof ServicosRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sobre': typeof SobreRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/Link/': typeof LinkIndexRoute
   '/blog/': typeof BlogIndexRoute
 }
 export interface FileRouteTypes {
@@ -114,36 +114,36 @@ export interface FileRouteTypes {
     | '/'
     | '/casos'
     | '/contato'
-    | '/link'
     | '/privacidade'
     | '/servicos'
     | '/sitemap.xml'
     | '/sobre'
     | '/blog/$slug'
+    | '/Link/'
     | '/blog/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/casos'
     | '/contato'
-    | '/link'
     | '/privacidade'
     | '/servicos'
     | '/sitemap.xml'
     | '/sobre'
     | '/blog/$slug'
+    | '/Link'
     | '/blog'
   id:
     | '__root__'
     | '/'
     | '/casos'
     | '/contato'
-    | '/link'
     | '/privacidade'
     | '/servicos'
     | '/sitemap.xml'
     | '/sobre'
     | '/blog/$slug'
+    | '/Link/'
     | '/blog/'
   fileRoutesById: FileRoutesById
 }
@@ -151,12 +151,12 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CasosRoute: typeof CasosRoute
   ContatoRoute: typeof ContatoRoute
-  LinkRoute: typeof LinkRoute
   PrivacidadeRoute: typeof PrivacidadeRoute
   ServicosRoute: typeof ServicosRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SobreRoute: typeof SobreRoute
   BlogSlugRoute: typeof BlogSlugRoute
+  LinkIndexRoute: typeof LinkIndexRoute
   BlogIndexRoute: typeof BlogIndexRoute
 }
 
@@ -190,13 +190,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PrivacidadeRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/link': {
-      id: '/link'
-      path: '/link'
-      fullPath: '/link'
-      preLoaderRoute: typeof LinkRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/contato': {
       id: '/contato'
       path: '/contato'
@@ -225,6 +218,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BlogIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/Link/': {
+      id: '/Link/'
+      path: '/Link'
+      fullPath: '/Link/'
+      preLoaderRoute: typeof LinkIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/blog/$slug': {
       id: '/blog/$slug'
       path: '/blog/$slug'
@@ -239,12 +239,12 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CasosRoute: CasosRoute,
   ContatoRoute: ContatoRoute,
-  LinkRoute: LinkRoute,
   PrivacidadeRoute: PrivacidadeRoute,
   ServicosRoute: ServicosRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   SobreRoute: SobreRoute,
   BlogSlugRoute: BlogSlugRoute,
+  LinkIndexRoute: LinkIndexRoute,
   BlogIndexRoute: BlogIndexRoute,
 }
 export const routeTree = rootRouteImport

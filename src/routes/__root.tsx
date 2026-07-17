@@ -162,7 +162,7 @@ function RootShell({ children }: { children: ReactNode }) {
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   const routerState = useRouterState();
-  const isLinkPage = routerState.location.pathname === "/link";
+  const isLinkPage = routerState.location.pathname.toLowerCase() === "/link";
 
   return (
     <QueryClientProvider client={queryClient}>
