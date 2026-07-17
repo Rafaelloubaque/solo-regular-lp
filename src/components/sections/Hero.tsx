@@ -4,7 +4,8 @@ import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion
 import { MessageCircle, ArrowRight, ShieldCheck, MapPin, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CONTACT } from "@/lib/site-data";
-import heroBg from "@/assets/hero-topo.jpg";
+import heroDesktop from "@/assets/2[[ (2).png";
+import heroMobile from "@/assets/mobiel.png";
 
 const STATS = [
   { value: "+15", label: "anos de experiência" },
@@ -21,15 +22,20 @@ export function Hero() {
 
   return (
     <section ref={ref} className="relative isolate overflow-hidden bg-[#06171a] text-white">
-      {/* Imagem topográfica de fundo com parallax */}
-      <motion.img
-        src={heroBg}
-        alt="Mapa topográfico representando território e georreferenciamento"
+      {/* Imagem de fundo com parallax */}
+      <motion.picture
         style={{ y: bgY }}
-        width={1600}
-        height={1200}
-        className="pointer-events-none absolute inset-0 -z-10 h-[118%] w-full object-cover opacity-70"
-      />
+        className="pointer-events-none absolute inset-0 -z-10 block h-[118%] w-full opacity-80"
+      >
+        <source media="(min-width: 768px)" srcSet={heroDesktop} />
+        <img
+          src={heroMobile}
+          alt="Equipe Solo Regular em escritório de arquitetura e regularização imobiliária"
+          width={500}
+          height={700}
+          className="h-full w-full object-cover object-center"
+        />
+      </motion.picture>
       {/* Gradientes / iluminação */}
       <div
         className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-[#06171a]/60 via-[#06171a]/70 to-[#06171a]"

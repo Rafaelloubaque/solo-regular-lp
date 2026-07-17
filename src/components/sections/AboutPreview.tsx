@@ -2,8 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-const aboutImage =
-  "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80";
+import aboutImage from "@/assets/e6532291-9f2c-47be-a8f6-f980443594d9.png";
 
 export function AboutPreview() {
   return (
@@ -20,8 +19,8 @@ export function AboutPreview() {
               <img
                 src={aboutImage}
                 alt="Fachada da Solo Regular"
-                width={920}
-                height={520}
+                width={1546}
+                height={1017}
                 loading="lazy"
                 className="aspect-[16/10] w-full object-cover object-center"
               />
