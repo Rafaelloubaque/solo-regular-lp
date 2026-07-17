@@ -1,0 +1,5 @@
+RewriteEngine On
+
+# Keep legacy .com.br URLs working after the main site moved to www.soloregular.com.
+RewriteCond %{HTTP_HOST} ^(www\.)?soloregular\.com\.br$ [NC]
+RewriteRule ^(.*)$ https://www.soloregular.com/$1 [R=301,L,NE]
