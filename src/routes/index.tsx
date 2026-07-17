@@ -23,7 +23,10 @@ export const Route = createFileRoute("/")({
         content:
           "Especialistas em regularização de imóveis, regularização fundiária, REURB, usucapião extrajudicial e desenvolvimento urbano em São Roque e região. Regularize seu imóvel e valorize seu patrimônio.",
       },
-      { property: "og:title", content: "Solo Regular — Regularize seu imóvel. Valorize seu patrimônio." },
+      {
+        property: "og:title",
+        content: "Solo Regular — Regularize seu imóvel. Valorize seu patrimônio.",
+      },
       {
         property: "og:description",
         content:

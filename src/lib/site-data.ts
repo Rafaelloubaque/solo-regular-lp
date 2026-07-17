@@ -39,7 +39,9 @@ export const CONTACT = {
   email: "contato@soloregular.com.br",
   address: "São Roque — SP", // TODO: endereço completo
   instagram: "https://www.instagram.com/soloregular/",
-  facebook: "",
+  facebook: "https://www.facebook.com/insoloregular/?locale=pt_BR",
+  linkedin: "https://www.linkedin.com/in/solo-regular-desenvolvimento-urbano-5483a5420/",
+  google: "",
 };
 
 export const AREAS = [
@@ -281,12 +283,28 @@ export interface BlogCategory {
 }
 
 export const BLOG_CATEGORIES: BlogCategory[] = [
-  { slug: "regularizacao-imobiliaria", name: "Regularização Imobiliária", description: "Tudo sobre dar segurança jurídica ao seu imóvel." },
+  {
+    slug: "regularizacao-imobiliaria",
+    name: "Regularização Imobiliária",
+    description: "Tudo sobre dar segurança jurídica ao seu imóvel.",
+  },
   { slug: "reurb", name: "REURB", description: "Regularização Fundiária Urbana na prática." },
   { slug: "usucapiao", name: "Usucapião", description: "Como adquirir propriedade pela posse." },
-  { slug: "cartorios", name: "Cartórios", description: "Trâmites e exigências do registro de imóveis." },
-  { slug: "patrimonio-familiar", name: "Patrimônio Familiar", description: "Proteja e valorize o patrimônio da família." },
-  { slug: "desenvolvimento-urbano", name: "Desenvolvimento Urbano", description: "Planejamento e crescimento das cidades." },
+  {
+    slug: "cartorios",
+    name: "Cartórios",
+    description: "Trâmites e exigências do registro de imóveis.",
+  },
+  {
+    slug: "patrimonio-familiar",
+    name: "Patrimônio Familiar",
+    description: "Proteja e valorize o patrimônio da família.",
+  },
+  {
+    slug: "desenvolvimento-urbano",
+    name: "Desenvolvimento Urbano",
+    description: "Planejamento e crescimento das cidades.",
+  },
 ];
 
 export interface BlogPost {
@@ -380,31 +398,36 @@ export const STEPS: ProcessStep[] = [
     icon: MessageSquare,
     step: "01",
     title: "Contato",
-    description: "Você fala com a gente pelo WhatsApp ou formulário e conta a situação do seu imóvel.",
+    description:
+      "Você fala com a gente pelo WhatsApp ou formulário e conta a situação do seu imóvel.",
   },
   {
     icon: Search,
     step: "02",
     title: "Análise",
-    description: "Fazemos a análise gratuita da documentação e da realidade do imóvel para indicar o melhor caminho.",
+    description:
+      "Fazemos a análise gratuita da documentação e da realidade do imóvel para indicar o melhor caminho.",
   },
   {
     icon: FileStack,
     step: "03",
     title: "Documentação",
-    description: "Reunimos e produzimos toda a documentação técnica, urbanística e jurídica necessária.",
+    description:
+      "Reunimos e produzimos toda a documentação técnica, urbanística e jurídica necessária.",
   },
   {
     icon: Stamp,
     step: "04",
     title: "Regularização",
-    description: "Conduzimos os trâmites junto a cartórios, prefeituras e órgãos públicos até a aprovação.",
+    description:
+      "Conduzimos os trâmites junto a cartórios, prefeituras e órgãos públicos até a aprovação.",
   },
   {
     icon: KeyRound,
     step: "05",
     title: "Entrega",
-    description: "Você recebe seu imóvel regularizado, com matrícula correta e segurança jurídica definitiva.",
+    description:
+      "Você recebe seu imóvel regularizado, com matrícula correta e segurança jurídica definitiva.",
   },
 ];
 
@@ -419,17 +442,20 @@ export const DIFFERENTIALS: Differential[] = [
   {
     icon: HeartHandshake,
     title: "Atendimento humanizado",
-    description: "Escuta ativa e acompanhamento próximo em cada etapa, com linguagem clara e sem juridiquês.",
+    description:
+      "Escuta ativa e acompanhamento próximo em cada etapa, com linguagem clara e sem juridiquês.",
   },
   {
     icon: Scale,
     title: "Segurança jurídica",
-    description: "Soluções que convertem posse em propriedade registrada, oponível a todos e definitiva.",
+    description:
+      "Soluções que convertem posse em propriedade registrada, oponível a todos e definitiva.",
   },
   {
     icon: Zap,
     title: "Agilidade",
-    description: "Priorizamos caminhos extrajudiciais e uma gestão única que evita retrabalho e atrasos.",
+    description:
+      "Priorizamos caminhos extrajudiciais e uma gestão única que evita retrabalho e atrasos.",
   },
   {
     icon: Users,
@@ -444,7 +470,8 @@ export const DIFFERENTIALS: Differential[] = [
   {
     icon: Clock,
     title: "Acompanhamento completo",
-    description: "Do primeiro contato à entrega, você sabe exatamente em que etapa o seu processo está.",
+    description:
+      "Do primeiro contato à entrega, você sabe exatamente em que etapa o seu processo está.",
   },
 ];
 
@@ -487,21 +514,25 @@ export const TIMELINE: TimelineItem[] = [
   {
     year: "Origem",
     title: "Nasce no interior de São Paulo",
-    description: "Da percepção de que regularizar exige integração entre áreas que atuavam de forma separada.",
+    description:
+      "Da percepção de que regularizar exige integração entre áreas que atuavam de forma separada.",
   },
   {
     year: "+15 anos",
     title: "Experiência em casos complexos",
-    description: "Documentação antiga, contratos de gaveta, divergências registrais e loteamentos irregulares.",
+    description:
+      "Documentação antiga, contratos de gaveta, divergências registrais e loteamentos irregulares.",
   },
   {
     year: "Gestão única",
     title: "Equipe multidisciplinar integrada",
-    description: "Arquitetura, urbanismo, direito e expertise registral sob uma única gestão do início ao fim.",
+    description:
+      "Arquitetura, urbanismo, direito e expertise registral sob uma única gestão do início ao fim.",
   },
   {
     year: "Hoje",
     title: "Referência regional",
-    description: "Atuação consolidada em São Roque, Sorocaba e região, transformando imóveis em patrimônio seguro.",
+    description:
+      "Atuação consolidada em São Roque, Sorocaba e região, transformando imóveis em patrimônio seguro.",
   },
 ];

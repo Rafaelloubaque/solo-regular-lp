@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import blueprint from "@/assets/blueprint.jpg";
+const blueprint =
+  "https://images.unsplash.com/photo-1572120360610-d971b9d7767c?auto=format&fit=crop&q=80";
 
 export function Differential() {
   return (

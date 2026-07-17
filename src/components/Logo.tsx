@@ -1,16 +1,9 @@
-import { Link } from "@tanstack/react-router";
-import logo from "@/assets/logo-solo-regular.jpg";
+import React from "react";
 
 export function Logo({ className }: { className?: string }) {
   return (
-    <Link to="/" className={className} aria-label="Solo Regular — página inicial">
-      <img
-        src={logo}
-        alt="Solo Regular — Desenvolvimento Urbano"
-        width={200}
-        height={200}
-        className="h-12 w-12 rounded-full object-contain shadow-sm ring-1 ring-border/60"
-      />
-    </Link>
+    <div className={`font-bold text-xl flex items-center ${className || ""}`}>
+      <span>Solo Regular</span>
+    </div>
   );
 }

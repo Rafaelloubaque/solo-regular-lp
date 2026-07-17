@@ -45,7 +45,12 @@ export function SectionHeading({
         {title}
       </h2>
       {description && (
-        <p className={cn("mt-4 text-base leading-relaxed", invert ? "text-deep-foreground/75" : "text-muted-foreground")}>
+        <p
+          className={cn(
+            "mt-4 text-base leading-relaxed",
+            invert ? "text-deep-foreground/75" : "text-muted-foreground",
+          )}
+        >
           {description}
         </p>
       )}

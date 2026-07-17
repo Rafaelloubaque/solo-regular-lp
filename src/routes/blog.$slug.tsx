@@ -41,7 +41,9 @@ export const Route = createFileRoute("/blog/$slug")({
   notFoundComponent: () => (
     <div className="mx-auto max-w-2xl px-4 py-24 text-center">
       <h1 className="font-serif text-3xl text-deep">Artigo não encontrado</h1>
-      <p className="mt-3 text-muted-foreground">O conteúdo que você procura não existe ou foi movido.</p>
+      <p className="mt-3 text-muted-foreground">
+        O conteúdo que você procura não existe ou foi movido.
+      </p>
       <Button asChild className="mt-6">
         <Link to="/blog">Voltar ao blog</Link>
       </Button>
@@ -59,7 +61,11 @@ export const Route = createFileRoute("/blog/$slug")({
 });
 
 function formatDate(d: string) {
-  return new Date(d).toLocaleDateString("pt-BR", { day: "2-digit", month: "long", year: "numeric" });
+  return new Date(d).toLocaleDateString("pt-BR", {
+    day: "2-digit",
+    month: "long",
+    year: "numeric",
+  });
 }
 
 function PostPage() {

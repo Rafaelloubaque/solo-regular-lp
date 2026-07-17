@@ -4,7 +4,7 @@ import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion
 import { MessageCircle, ArrowRight, ShieldCheck, MapPin, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CONTACT } from "@/lib/site-data";
-import heroBg from "@/assets/2[[ (1).png";
+import heroBg from "@/assets/hero-topo.jpg";
 
 const STATS = [
   { value: "+15", label: "anos de experiência" },
@@ -106,11 +106,10 @@ export function Hero() {
             className="mt-12 grid max-w-xl grid-cols-3 gap-4"
           >
             {STATS.map((s) => (
-              <div
-                key={s.label}
-                className="glass-dark rounded-2xl px-4 py-4 text-center"
-              >
-                <p className="font-serif text-2xl font-semibold text-white sm:text-3xl">{s.value}</p>
+              <div key={s.label} className="glass-dark rounded-2xl px-4 py-4 text-center">
+                <p className="font-serif text-2xl font-semibold text-white sm:text-3xl">
+                  {s.value}
+                </p>
                 <p className="mt-1 text-[0.7rem] leading-tight text-white/65">{s.label}</p>
               </div>
             ))}

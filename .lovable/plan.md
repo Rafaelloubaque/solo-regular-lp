@@ -5,6 +5,7 @@ Site institucional sofisticado para a Solo Regular, posicionando-a como referên
 ## Identidade Visual
 
 **Paleta (extraída do logo):**
+
 - Verde-petróleo (primária): `oklch(0.52 0.08 195)` ≈ `#1B8E8E` — autoridade, solidez
 - Verde-petróleo profundo (texto/headers): `#0F4F50`
 - Off-white / areia (fundos): `#F7F5F0` — sensação patrimônio/elegância
@@ -17,6 +18,7 @@ Site institucional sofisticado para a Solo Regular, posicionando-a como referên
 **Elementos de design:** linhas finas geométricas inspiradas em plantas urbanísticas/loteamentos (grid sutil, contornos de quadras), ícones minimalistas (lucide), microanimações suaves (fade/slide on-scroll), uso generoso de espaço em branco, hierarquia forte.
 
 ## Imagens
+
 - Logo e fotos dos sócios (Adriana Cruz e Ronaldo Xavier) hospedados via Lovable Assets a partir dos uploads.
 - Imagem aérea urbana enviada usada como apoio na Hero/Sobre.
 - Imagens geradas adicionais quando necessário (ex.: textura de planta urbanística para hero/cards).
@@ -51,17 +53,21 @@ A Home concentra todas as seções pedidas; páginas dedicadas aprofundam Servi�
 12. **Rodapé** — endereço, redes, contato, áreas atendidas (São Roque, Mairinque, Araçariguama, Alumínio, Ibiúna, Região Metropolitana de Sorocaba).
 
 ## Formulário (conforme escolhido: visual por enquanto)
+
 - Layout estratégico completo e validado (estado local), mas **sem envio/armazenamento**. Botão de submit mostra mensagem de sucesso (toast). WhatsApp permanece como canal real de conversão em destaque. Fácil de conectar a backend depois.
 
 ## Blog (conforme escolhido: artigos de exemplo estáticos)
+
 - 6 categorias (Regularização Imobiliária, REURB, Usucapião, Cartórios, Patrimônio Familiar, Desenvolvimento Urbano).
 - 3–4 artigos de exemplo já redigidos, otimizados para SEO, em dados estáticos, renderizados em `/blog/$slug` com Article JSON-LD. Editáveis manualmente.
 
 ## SEO
+
 - `head()` por rota com keywords-alvo (regularização de imóveis, regularização fundiária, REURB, usucapião extrajudicial, regularização imobiliária São Roque, regularização de loteamentos, desenvolvimento urbano).
 - H1 único por página, HTML semântico, alt text, JSON-LD (Organization no root, FAQPage na home, Article no blog, LocalBusiness com áreas atendidas), `sitemap.xml` e `robots.txt`.
 
 ## Detalhes Técnicos
+
 - Componentes pequenos e reutilizáveis em `src/components/` (Header, Footer, Hero, seções, cards, FAQ).
 - Tokens de design e fontes configurados em `src/styles.css`; fontes via `<link>` no `__root.tsx`.
 - shadcn/ui para accordion (FAQ), form inputs, button, cards.
@@ -69,4 +75,5 @@ A Home concentra todas as seções pedidas; páginas dedicadas aprofundam Servi�
 - Sem backend nesta versão; dados de contato com placeholders claros (WhatsApp/e-mail/endereço) para você substituir, já que não foram informados.
 
 ## Observação
+
 Dados oficiais de contato não foram fornecidos — usarei placeholders evidentes (ex.: `(11) 0000-0000`, `contato@sololregular.com.br`, endereço em São Roque/SP) que você poderá trocar depois.

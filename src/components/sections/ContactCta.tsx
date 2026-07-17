@@ -4,7 +4,10 @@ import { CONTACT, AREAS } from "@/lib/site-data";
 
 export function ContactCta() {
   return (
-    <section id="contato" className="relative overflow-hidden bg-deep py-20 text-deep-foreground lg:py-28">
+    <section
+      id="contato"
+      className="relative overflow-hidden bg-deep py-20 text-deep-foreground lg:py-28"
+    >
       <div className="absolute inset-0 plan-grid opacity-[0.12]" aria-hidden="true" />
       <div
         className="pointer-events-none absolute -right-24 top-1/4 size-96 rounded-full bg-primary/20 blur-[120px] animate-aurora"
@@ -31,7 +34,9 @@ export function ContactCta() {
           >
             <MessageCircle className="size-6" />
             <span>
-              <span className="block text-xs uppercase tracking-wide opacity-80">WhatsApp direto</span>
+              <span className="block text-xs uppercase tracking-wide opacity-80">
+                WhatsApp direto
+              </span>
               <span className="block text-lg font-semibold">{CONTACT.whatsappDisplay}</span>
             </span>
           </a>

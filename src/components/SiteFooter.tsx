@@ -29,7 +29,10 @@ export function SiteFooter() {
             <ul className="mt-4 space-y-2 text-sm opacity-85">
               {SERVICES.slice(0, 6).map((s) => (
                 <li key={s.slug}>
-                  <Link to="/servicos" className="transition-opacity hover:opacity-100 hover:underline">
+                  <Link
+                    to="/servicos"
+                    className="transition-opacity hover:opacity-100 hover:underline"
+                  >
                     {s.title}
                   </Link>
                 </li>
@@ -65,7 +68,12 @@ export function SiteFooter() {
               </li>
               <li className="flex items-center gap-2">
                 <MessageCircle className="size-4 shrink-0" />
-                <a href={CONTACT.whatsappUrl} target="_blank" rel="noopener noreferrer" className="hover:underline">
+                <a
+                  href={CONTACT.whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:underline"
+                >
                   WhatsApp {CONTACT.whatsappDisplay}
                 </a>
               </li>
@@ -101,10 +109,16 @@ export function SiteFooter() {
             reservados.
           </p>
           <div className="flex items-center gap-4">
-            <Link to="/privacidade" className="transition-opacity hover:opacity-100 hover:underline">
+            <Link
+              to="/privacidade"
+              className="transition-opacity hover:opacity-100 hover:underline"
+            >
               Política de Privacidade
             </Link>
-            <Link to="/privacidade" className="transition-opacity hover:opacity-100 hover:underline">
+            <Link
+              to="/privacidade"
+              className="transition-opacity hover:opacity-100 hover:underline"
+            >
               LGPD
             </Link>
           </div>
