@@ -69,7 +69,6 @@ function BlogPage() {
                       <img
                         src={post.image}
                         alt={post.imageAlt ?? ""}
-                        loading="lazy"
                         className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                       />
                     </div>
