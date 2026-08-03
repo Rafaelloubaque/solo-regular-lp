@@ -11,6 +11,7 @@ import {
 import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
+import { fallbackStyles } from "../lib/fallback-styles";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Toaster } from "@/components/ui/sonner";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -101,8 +102,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
-      { rel: "stylesheet", href: "/styles.css" },
-      { rel: "stylesheet", href: appCss },
+      ...(import.meta.env.DEV ? [{ rel: "stylesheet", href: appCss }] : []),
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
@@ -151,6 +151,9 @@ function RootShell({ children }: { children: ReactNode }) {
     <html lang="pt-BR">
       <head>
         <HeadContent />
+        {import.meta.env.PROD ? (
+          <style data-solo-fallback-css dangerouslySetInnerHTML={{ __html: fallbackStyles }} />
+        ) : null}
       </head>
       <body>
         {children}
