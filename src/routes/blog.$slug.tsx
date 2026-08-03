@@ -1,5 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { BLOG_POSTS } from "@/lib/site-data";
+import { BLOG_POSTS, type BlogContentBlock } from "@/lib/site-data";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, CalendarDays, Clock } from "lucide-react";
 
@@ -19,6 +19,7 @@ export const Route = createFileRoute("/blog/$slug")({
         { property: "og:description", content: loaderData.excerpt },
         { property: "og:type", content: "article" },
         { property: "og:url", content: `/blog/${loaderData.slug}` },
+        ...(loaderData.image ? [{ property: "og:image", content: loaderData.image }] : []),
       ],
       links: [{ rel: "canonical", href: `/blog/${loaderData.slug}` }],
       scripts: [
@@ -31,6 +32,7 @@ export const Route = createFileRoute("/blog/$slug")({
             description: loaderData.excerpt,
             datePublished: loaderData.date,
             articleSection: loaderData.category,
+            ...(loaderData.image ? { image: loaderData.image } : {}),
             author: { "@type": "Organization", name: "Solo Regular" },
             publisher: { "@type": "Organization", name: "Solo Regular" },
           }),
@@ -68,6 +70,46 @@ function formatDate(d: string) {
   });
 }
 
+function BlogContent({ block }: { block: BlogContentBlock }) {
+  if (block.type === "heading") {
+    return <h2 className="pt-4 font-serif text-2xl leading-tight text-deep">{block.text}</h2>;
+  }
+
+  if (block.type === "unorderedList") {
+    return (
+      <ul className="space-y-3 pl-6 text-base leading-relaxed text-foreground/90 sm:text-lg">
+        {block.items.map((item) => (
+          <li key={item} className="list-disc pl-1">
+            {item}
+          </li>
+        ))}
+      </ul>
+    );
+  }
+
+  if (block.type === "orderedList") {
+    return (
+      <ol className="space-y-3 pl-6 text-base leading-relaxed text-foreground/90 sm:text-lg">
+        {block.items.map((item) => (
+          <li key={item} className="list-decimal pl-1">
+            {item}
+          </li>
+        ))}
+      </ol>
+    );
+  }
+
+  if (block.type === "note") {
+    return (
+      <aside className="rounded-2xl border border-primary/20 bg-secondary p-5 text-base leading-relaxed text-foreground/90">
+        {block.text}
+      </aside>
+    );
+  }
+
+  return <p className="text-base leading-relaxed text-foreground/90 sm:text-lg">{block.text}</p>;
+}
+
 function PostPage() {
   const post = Route.useLoaderData();
 
@@ -100,12 +142,24 @@ function PostPage() {
             </span>
           </div>
         </div>
+
+        {post.image ? (
+          <div className="relative mx-auto max-w-5xl px-4 pb-10 sm:px-6 lg:px-8">
+            <div className="aspect-[16/9] overflow-hidden rounded-2xl border border-border bg-muted shadow-elegant">
+              <img
+                src={post.image}
+                alt={post.imageAlt ?? ""}
+                className="h-full w-full object-cover"
+              />
+            </div>
+          </div>
+        ) : null}
       </header>
 
       <div className="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="space-y-6 text-lg leading-relaxed text-foreground/90">
-          {post.content.map((para: string, i: number) => (
-            <p key={i}>{para}</p>
+        <div className="space-y-6">
+          {post.content.map((block, i) => (
+            <BlogContent key={i} block={block} />
           ))}
         </div>
 

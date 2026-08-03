@@ -64,6 +64,16 @@ function BlogPage() {
                   params={{ slug: post.slug }}
                   className="group flex h-full flex-col rounded-2xl border border-border bg-card p-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5"
                 >
+                  {post.image ? (
+                    <div className="-mx-6 -mt-6 mb-5 aspect-[16/9] overflow-hidden rounded-t-2xl bg-muted">
+                      <img
+                        src={post.image}
+                        alt={post.imageAlt ?? ""}
+                        loading="lazy"
+                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                    </div>
+                  ) : null}
                   <span className="text-xs font-semibold uppercase tracking-wide text-primary">
                     {post.category}
                   </span>
