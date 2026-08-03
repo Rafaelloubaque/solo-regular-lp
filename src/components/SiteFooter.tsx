@@ -7,9 +7,9 @@ export function SiteFooter() {
   return (
     <footer className="bg-deep text-deep-foreground">
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-10 text-center md:grid-cols-2 md:text-left lg:grid-cols-4">
           <div>
-            <div className="flex items-center gap-3">
+            <div className="flex items-center justify-center gap-3 md:justify-start">
               <Logo />
               <div className="flex flex-col leading-none">
                 <span className="font-serif text-lg font-semibold">Solo Regular</span>
@@ -18,7 +18,7 @@ export function SiteFooter() {
                 </span>
               </div>
             </div>
-            <p className="mt-4 max-w-xs text-sm opacity-80">
+            <p className="mx-auto mt-4 max-w-xs text-sm opacity-80 md:mx-0">
               Transformamos imóveis irregulares em patrimônios seguros, valorizados e juridicamente
               protegidos.
             </p>
@@ -52,21 +52,21 @@ export function SiteFooter() {
           <div>
             <h3 className="font-serif text-base font-semibold">Contato</h3>
             <ul className="mt-4 space-y-3 text-sm opacity-85">
-              <li className="flex items-start gap-2">
+              <li className="flex items-start justify-center gap-2 text-center md:justify-start md:text-left">
                 <MapPin className="mt-0.5 size-4 shrink-0" />
                 <span>{CONTACT.address}</span>
               </li>
-              <li className="flex items-center gap-2">
+              <li className="flex items-center justify-center gap-2 md:justify-start">
                 <Phone className="size-4 shrink-0" />
                 <span>{CONTACT.phone}</span>
               </li>
-              <li className="flex items-center gap-2">
+              <li className="flex items-center justify-center gap-2 md:justify-start">
                 <Mail className="size-4 shrink-0" />
                 <a href={`mailto:${CONTACT.email}`} className="hover:underline">
                   {CONTACT.email}
                 </a>
               </li>
-              <li className="flex items-center gap-2">
+              <li className="flex items-center justify-center gap-2 md:justify-start">
                 <MessageCircle className="size-4 shrink-0" />
                 <a
                   href={CONTACT.whatsappUrl}
@@ -78,7 +78,7 @@ export function SiteFooter() {
                 </a>
               </li>
             </ul>
-            <div className="mt-4 flex gap-3">
+            <div className="mt-4 flex justify-center gap-3 md:justify-start">
               <a
                 href={CONTACT.instagram}
                 target="_blank"
@@ -108,7 +108,7 @@ export function SiteFooter() {
             © {new Date().getFullYear()} Solo Regular — Desenvolvimento Urbano. Todos os direitos
             reservados.
           </p>
-          <div className="flex items-center gap-4">
+          <div className="flex flex-wrap items-center justify-center gap-4">
             <Link
               to="/privacidade"
               className="transition-opacity hover:opacity-100 hover:underline"

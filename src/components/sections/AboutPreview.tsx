@@ -9,12 +9,13 @@ export function AboutPreview() {
     <section className="overflow-hidden bg-sand py-20 lg:py-28">
       <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
         <motion.div
+          className="mx-auto w-full max-w-xl lg:max-w-none"
           initial={{ opacity: 0, x: -24 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         >
-          <div className="relative">
+          <div className="relative mx-auto">
             <div className="overflow-hidden rounded-3xl border border-border shadow-elegant">
               <img
                 src={aboutImage}

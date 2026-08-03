@@ -14,14 +14,14 @@ export function ContactCta() {
         aria-hidden="true"
       />
       <div className="relative mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
-        <div>
+        <div className="text-center lg:text-left">
           <div className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-gold">
             Fale com a Solo Regular
           </div>
           <h2 className="font-serif text-3xl leading-tight sm:text-4xl">
             Solicite a análise gratuita do seu imóvel
           </h2>
-          <p className="mt-5 max-w-md text-base leading-relaxed text-deep-foreground/80">
+          <p className="mx-auto mt-5 max-w-md text-base leading-relaxed text-deep-foreground/80 lg:mx-0">
             Conte sua situação e nossa equipe multidisciplinar indicará o melhor caminho para
             regularizar e valorizar o seu patrimônio.
           </p>
@@ -30,7 +30,7 @@ export function ContactCta() {
             href={CONTACT.whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="glow-primary mt-8 inline-flex items-center gap-3 rounded-2xl bg-primary px-6 py-4 text-primary-foreground transition-transform hover:scale-[1.02]"
+            className="glow-primary mx-auto mt-8 inline-flex items-center justify-center gap-3 rounded-2xl bg-primary px-6 py-4 text-primary-foreground transition-transform hover:scale-[1.02] lg:mx-0"
           >
             <MessageCircle className="size-6" />
             <span>
@@ -41,14 +41,14 @@ export function ContactCta() {
             </span>
           </a>
 
-          <ul className="mt-8 space-y-3 text-sm text-deep-foreground/85">
-            <li className="flex items-center gap-2">
+          <ul className="mx-auto mt-8 max-w-md space-y-3 text-sm text-deep-foreground/85 lg:mx-0">
+            <li className="flex items-center justify-center gap-2 lg:justify-start">
               <MapPin className="size-4 shrink-0 text-gold" /> {CONTACT.address}
             </li>
-            <li className="flex items-center gap-2">
+            <li className="flex items-center justify-center gap-2 lg:justify-start">
               <Phone className="size-4 shrink-0 text-gold" /> {CONTACT.phone}
             </li>
-            <li className="flex items-center gap-2">
+            <li className="flex items-center justify-center gap-2 lg:justify-start">
               <Mail className="size-4 shrink-0 text-gold" /> {CONTACT.email}
             </li>
           </ul>
@@ -57,7 +57,7 @@ export function ContactCta() {
             <p className="text-xs font-semibold uppercase tracking-wide text-deep-foreground/60">
               Áreas atendidas
             </p>
-            <div className="mt-2 flex flex-wrap gap-2">
+            <div className="mt-2 flex flex-wrap justify-center gap-2 lg:justify-start">
               {AREAS.map((a) => (
                 <span
                   key={a}
