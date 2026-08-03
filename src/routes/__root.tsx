@@ -27,6 +27,7 @@ html.no-app-js [style*="opacity: 0"] {
 }
 
 html.no-app-js .translate-y-6,
+html.no-app-js [style*="translateX"],
 html.no-app-js [style*="translateY"],
 html.no-app-js [style*="translate3d"] {
   transform: none !important;
