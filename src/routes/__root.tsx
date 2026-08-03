@@ -19,6 +19,25 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { WhatsAppFab } from "@/components/WhatsAppFab";
 import { CONTACT } from "@/lib/site-data";
 
+const noAppJsCss = `
+html.no-app-js .opacity-0,
+html.no-app-js [style*="opacity:0"],
+html.no-app-js [style*="opacity: 0"] {
+  opacity: 1 !important;
+}
+
+html.no-app-js .translate-y-6,
+html.no-app-js [style*="translateY"],
+html.no-app-js [style*="translate3d"] {
+  transform: none !important;
+  translate: 0 0 !important;
+}
+
+html.no-app-js .transition-all {
+  transition: none !important;
+}
+`;
+
 function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
@@ -148,9 +167,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="pt-BR">
+    <html lang="pt-BR" className="no-app-js">
       <head>
         <HeadContent />
+        <style data-solo-no-app-js dangerouslySetInnerHTML={{ __html: noAppJsCss }} />
         {import.meta.env.PROD ? (
           <style data-solo-fallback-css dangerouslySetInnerHTML={{ __html: fallbackStyles }} />
         ) : null}
@@ -167,6 +187,10 @@ function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   const routerState = useRouterState();
   const isLinkPage = routerState.location.pathname.toLowerCase() === "/link";
+
+  useEffect(() => {
+    document.documentElement.classList.remove("no-app-js");
+  }, []);
 
   return (
     <QueryClientProvider client={queryClient}>
