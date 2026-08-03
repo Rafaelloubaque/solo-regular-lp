@@ -29,9 +29,7 @@ import {
   Zap,
   type LucideIcon,
 } from "lucide-react";
-
-const regularizacaoImage = "/blog-regularizacao.png";
-const reurbImage = "/blog-reurb.jpg";
+import { regularizacaoImage, reurbImage } from "./blog-images";
 
 export const CONTACT = {
   whatsappDisplay: "+55 11 94764-3922",
