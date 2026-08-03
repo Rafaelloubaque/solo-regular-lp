@@ -33,7 +33,7 @@ export function Hero() {
           alt="Equipe Solo Regular em escritório de arquitetura e regularização imobiliária"
           width={500}
           height={700}
-          className="h-full w-full object-cover object-center"
+          className="h-full w-full object-cover object-left md:object-center"
         />
       </motion.picture>
       {/* Gradientes / iluminação */}
@@ -46,14 +46,14 @@ export function Hero() {
         style={{ y: contentY }}
         className="relative mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8 lg:py-36"
       >
-        <div className="max-w-3xl">
+        <div className="min-w-0 max-w-3xl">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.15em] text-white/85 backdrop-blur-sm"
+            className="mb-6 inline-flex max-w-full items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-[0.65rem] font-semibold uppercase tracking-[0.08em] text-white/85 backdrop-blur-sm sm:px-4 sm:text-xs sm:tracking-[0.15em]"
           >
-            <ShieldCheck className="size-3.5 text-gold" />
+            <ShieldCheck className="size-3.5 shrink-0 text-gold" />
             Regularização imobiliária & fundiária
           </motion.div>
 
@@ -61,10 +61,10 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
-            className="font-serif text-4xl leading-[1.05] text-white sm:text-5xl lg:text-6xl"
+            className="max-w-full break-words font-serif text-[2.2rem] leading-[1.05] text-white min-[390px]:text-[2.35rem] sm:text-5xl lg:text-6xl"
           >
             Regularize seu imóvel.
-            <span className="mt-1 block bg-gradient-to-r from-primary via-teal-300 to-gold bg-clip-text text-transparent">
+            <span className="mt-1 block max-w-[12ch] bg-gradient-to-r from-primary via-teal-300 to-gold bg-clip-text text-transparent sm:max-w-none">
               Valorize seu patrimônio.
             </span>
           </motion.h1>
@@ -73,7 +73,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-6 max-w-xl text-lg leading-relaxed text-white/80"
+            className="mt-6 max-w-xl text-base leading-relaxed text-white/80 sm:text-lg"
           >
             Especialistas em Regularização Fundiária, REURB, Usucapião Extrajudicial e
             Desenvolvimento Urbano. Resolvemos casos complexos de documentação de forma simples e
@@ -86,7 +86,7 @@ export function Hero() {
             transition={{ duration: 0.7, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
             className="mt-9 flex flex-col gap-3 sm:flex-row"
           >
-            <Button asChild size="lg" className="glow-primary">
+            <Button asChild size="lg" className="glow-primary w-full justify-center sm:w-auto">
               <a href={CONTACT.whatsappUrl} target="_blank" rel="noopener noreferrer">
                 <MessageCircle className="size-4" />
                 Falar no WhatsApp
@@ -96,7 +96,7 @@ export function Hero() {
               asChild
               size="lg"
               variant="outline"
-              className="border-white/25 bg-white/5 text-white backdrop-blur-sm hover:bg-white/10 hover:text-white"
+              className="w-full justify-center border-white/25 bg-white/5 text-white backdrop-blur-sm hover:bg-white/10 hover:text-white sm:w-auto"
             >
               <Link to="/contato">
                 Solicitar Análise
@@ -109,11 +109,14 @@ export function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="mt-12 grid max-w-xl grid-cols-3 gap-4"
+            className="mt-12 grid w-full max-w-xl grid-cols-3 gap-2 sm:gap-4"
           >
             {STATS.map((s) => (
-              <div key={s.label} className="glass-dark rounded-2xl px-4 py-4 text-center">
-                <p className="font-serif text-2xl font-semibold text-white sm:text-3xl">
+              <div
+                key={s.label}
+                className="glass-dark min-w-0 rounded-xl px-2 py-3 text-center sm:rounded-2xl sm:px-4 sm:py-4"
+              >
+                <p className="font-serif text-xl font-semibold text-white sm:text-3xl">
                   {s.value}
                 </p>
                 <p className="mt-1 text-[0.7rem] leading-tight text-white/65">{s.label}</p>

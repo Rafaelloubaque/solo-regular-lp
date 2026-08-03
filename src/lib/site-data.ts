@@ -29,7 +29,7 @@ import {
   Zap,
   type LucideIcon,
 } from "lucide-react";
-import { regularizacaoImage, reurbImage } from "./blog-images";
+import { regularizacaoImage, reurbImage, usucapiaoImage } from "./blog-images";
 
 export const CONTACT = {
   whatsappDisplay: "+55 11 94764-3922",
@@ -340,7 +340,7 @@ export const BLOG_POSTS: BlogPost[] = [
     date: "2026-05-12",
     readingTime: "8 min",
     image: regularizacaoImage,
-    imageAlt: "Projeto técnico e documentação para regularização de imóvel",
+    imageAlt: "Planta de terreno e escritura para regularização imobiliária",
     content: [
       {
         type: "paragraph",
@@ -510,7 +510,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "Entenda os requisitos, modalidades e caminhos da usucapião judicial e extrajudicial para converter posse em propriedade registrada.",
     date: "2026-04-10",
     readingTime: "9 min",
-    image: regularizacaoImage,
+    image: usucapiaoImage,
     imageAlt: "Documentação técnica para usucapião e regularização de posse",
     content: [
       {
