@@ -22,13 +22,14 @@ export function Testimonials() {
               className="overflow-hidden rounded-lg"
             >
               <video
-                src={testimonial.src}
                 className="aspect-video w-full bg-black object-contain"
                 controls
                 playsInline
                 preload="metadata"
                 aria-label={`Depoimento em vídeo ${i + 1}`}
-              />
+              >
+                <source src={testimonial.src} type="video/mp4" />
+              </video>
             </motion.div>
           ))}
         </div>
