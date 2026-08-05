@@ -32,6 +32,9 @@ import {
 import depoimentoRoseliVideo from "../assets/01 DEPOIMENTO Dona Roseli.mp4";
 import depoimentoArleteVideo from "../assets/arlete.mp4";
 import depoimentoIrmaosVideo from "../assets/IRMÃOS.mp4";
+import depoimentoRoseliPoster from "../assets/depoimento-roseli-poster.jpg";
+import depoimentoArletePoster from "../assets/depoimento-arlete-poster.jpg";
+import depoimentoIrmaosPoster from "../assets/depoimento-irmaos-poster.jpg";
 import { regularizacaoImage, reurbImage, usucapiaoImage } from "./blog-images";
 
 export const CONTACT = {
@@ -717,12 +720,13 @@ export const DIFFERENTIALS: Differential[] = [
 /* ---- Depoimentos ---- */
 export interface Testimonial {
   src: string;
+  poster: string;
 }
 
 export const TESTIMONIALS: Testimonial[] = [
-  { src: depoimentoRoseliVideo },
-  { src: depoimentoArleteVideo },
-  { src: depoimentoIrmaosVideo },
+  { src: depoimentoRoseliVideo, poster: depoimentoRoseliPoster },
+  { src: depoimentoArleteVideo, poster: depoimentoArletePoster },
+  { src: depoimentoIrmaosVideo, poster: depoimentoIrmaosPoster },
 ];
 
 /* ---- Linha do tempo da empresa ---- */

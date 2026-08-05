@@ -26,6 +26,7 @@ export function Testimonials() {
                 controls
                 playsInline
                 preload="metadata"
+                poster={testimonial.poster}
                 aria-label={`Depoimento em vídeo ${i + 1}`}
               >
                 <source src={testimonial.src} type="video/mp4" />
