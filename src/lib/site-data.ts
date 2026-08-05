@@ -29,6 +29,9 @@ import {
   Zap,
   type LucideIcon,
 } from "lucide-react";
+import depoimentoRoseliVideo from "../assets/01 DEPOIMENTO Dona Roseli.mp4";
+import depoimentoArleteVideo from "../assets/arlete.mp4";
+import depoimentoIrmaosVideo from "../assets/IRMÃOS.mp4";
 import { regularizacaoImage, reurbImage, usucapiaoImage } from "./blog-images";
 
 export const CONTACT = {
@@ -713,30 +716,13 @@ export const DIFFERENTIALS: Differential[] = [
 
 /* ---- Depoimentos ---- */
 export interface Testimonial {
-  name: string;
-  location: string;
-  quote: string;
+  src: string;
 }
 
 export const TESTIMONIALS: Testimonial[] = [
-  {
-    name: "Marcelo A.",
-    location: "São Roque — SP",
-    quote:
-      "Comprei meu terreno por contrato de gaveta e vivia com medo de perder tudo. A Solo Regular resolveu e hoje a escritura está no meu nome.",
-  },
-  {
-    name: "Fernanda R.",
-    location: "Mairinque — SP",
-    quote:
-      "O inventário travava a venda da casa da família há anos. Em poucos meses tínhamos a documentação regularizada e pudemos vender.",
-  },
-  {
-    name: "Condomínio Araçari",
-    location: "Araçariguama — SP",
-    quote:
-      "Regularizaram as unidades e instituíram o condomínio. O patrimônio de todos os moradores valorizou e ficou seguro.",
-  },
+  { src: depoimentoRoseliVideo },
+  { src: depoimentoArleteVideo },
+  { src: depoimentoIrmaosVideo },
 ];
 
 /* ---- Linha do tempo da empresa ---- */

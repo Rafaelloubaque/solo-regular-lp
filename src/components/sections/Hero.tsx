@@ -116,9 +116,7 @@ export function Hero() {
                 key={s.label}
                 className="glass-dark min-w-0 rounded-xl px-2 py-3 text-center sm:rounded-2xl sm:px-4 sm:py-4"
               >
-                <p className="font-serif text-xl font-semibold text-white sm:text-3xl">
-                  {s.value}
-                </p>
+                <p className="font-serif text-xl font-semibold text-white sm:text-3xl">{s.value}</p>
                 <p className="mt-1 text-[0.7rem] leading-tight text-white/65">{s.label}</p>
               </div>
             ))}
