@@ -1,13 +1,13 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { BLOG_POSTS, type BlogContentBlock } from "@/lib/site-data";
+import { findManagedBlogPost, type ManagedBlogPost } from "@/lib/blog-store";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, CalendarDays, Clock } from "lucide-react";
 
 export const Route = createFileRoute("/blog/$slug")({
   loader: ({ params }) => {
-    const post = BLOG_POSTS.find((p) => p.slug === params.slug);
-    if (!post) throw notFound();
-    return post;
+    return BLOG_POSTS.find((p) => p.slug === params.slug) ?? null;
   },
   head: ({ loaderData }) => {
     if (!loaderData) return {};
@@ -40,17 +40,6 @@ export const Route = createFileRoute("/blog/$slug")({
       ],
     };
   },
-  notFoundComponent: () => (
-    <div className="mx-auto max-w-2xl px-4 py-24 text-center">
-      <h1 className="font-serif text-3xl text-deep">Artigo não encontrado</h1>
-      <p className="mt-3 text-muted-foreground">
-        O conteúdo que você procura não existe ou foi movido.
-      </p>
-      <Button asChild className="mt-6">
-        <Link to="/blog">Voltar ao blog</Link>
-      </Button>
-    </div>
-  ),
   errorComponent: () => (
     <div className="mx-auto max-w-2xl px-4 py-24 text-center">
       <h1 className="font-serif text-3xl text-deep">Não foi possível carregar o artigo</h1>
@@ -110,8 +99,48 @@ function BlogContent({ block }: { block: BlogContentBlock }) {
   return <p className="text-base leading-relaxed text-foreground/90 sm:text-lg">{block.text}</p>;
 }
 
+function MissingPost() {
+  return (
+    <div className="mx-auto max-w-2xl px-4 py-24 text-center">
+      <h1 className="font-serif text-3xl text-deep">Artigo não encontrado</h1>
+      <p className="mt-3 text-muted-foreground">
+        O conteúdo que você procura não existe ou foi movido.
+      </p>
+      <Button asChild className="mt-6">
+        <Link to="/blog">Voltar ao blog</Link>
+      </Button>
+    </div>
+  );
+}
+
 function PostPage() {
-  const post = Route.useLoaderData();
+  const loaderPost = Route.useLoaderData();
+  const { slug } = Route.useParams();
+  const [post, setPost] = useState<ManagedBlogPost | null>(() =>
+    loaderPost ? { ...loaderPost, source: "fixed" } : null,
+  );
+  const [ready, setReady] = useState(Boolean(loaderPost));
+
+  useEffect(() => {
+    setPost(findManagedBlogPost(slug));
+    setReady(true);
+  }, [slug]);
+
+  if (!post) {
+    if (!ready) {
+      return (
+        <div className="mx-auto max-w-2xl px-4 py-24 text-center text-muted-foreground">
+          Carregando artigo...
+        </div>
+      );
+    }
+
+    return <MissingPost />;
+  }
+
+  const ctaLabel = post.ctaLabel ?? "Solicitar Análise Gratuita";
+  const ctaHref = post.ctaUrl ?? "/contato";
+  const ctaIsExternal = /^https?:\/\//i.test(ctaHref);
 
   return (
     <article className="bg-background">
@@ -169,7 +198,13 @@ function PostPage() {
             Solicite uma análise gratuita do seu imóvel com a Solo Regular.
           </p>
           <Button asChild className="mt-5">
-            <Link to="/contato">Solicitar Análise Gratuita</Link>
+            <a
+              href={ctaHref}
+              target={ctaIsExternal ? "_blank" : undefined}
+              rel={ctaIsExternal ? "noreferrer" : undefined}
+            >
+              {ctaLabel}
+            </a>
           </Button>
         </div>
       </div>

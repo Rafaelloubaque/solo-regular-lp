@@ -1,11 +1,12 @@
 import { Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { BLOG_POSTS, BLOG_CATEGORIES } from "@/lib/site-data";
+import { useManagedBlogPosts } from "@/hooks/use-managed-blog-posts";
+import { BLOG_CATEGORIES } from "@/lib/site-data";
 import { SectionHeading } from "@/components/SectionHeading";
 import { ArrowUpRight } from "lucide-react";
 
 export function BlogPreview() {
-  const posts = BLOG_POSTS.slice(0, 3);
+  const posts = useManagedBlogPosts().slice(0, 3);
   return (
     <section className="bg-background py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

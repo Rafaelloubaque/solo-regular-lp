@@ -1,8 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageHero } from "@/components/PageHero";
 import { Reveal } from "@/components/Reveal";
-import { BLOG_POSTS, BLOG_CATEGORIES } from "@/lib/site-data";
-import { ArrowUpRight, CalendarDays, Clock } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { useManagedBlogPosts } from "@/hooks/use-managed-blog-posts";
+import { BLOG_CATEGORIES } from "@/lib/site-data";
+import { ArrowUpRight, CalendarDays, Clock, PencilLine } from "lucide-react";
 
 export const Route = createFileRoute("/blog/")({
   head: () => ({
@@ -34,6 +36,9 @@ function formatDate(d: string) {
 }
 
 function BlogPage() {
+  const posts = useManagedBlogPosts();
+  const hasCustomPosts = posts.some((post) => post.source === "custom");
+
   return (
     <>
       <PageHero
@@ -45,19 +50,33 @@ function BlogPage() {
 
       <section className="bg-background py-16 lg:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mb-12 flex flex-wrap justify-center gap-2">
-            {BLOG_CATEGORIES.map((c) => (
-              <span
-                key={c.slug}
-                className="rounded-full border border-border bg-card px-4 py-1.5 text-sm text-foreground/80"
-              >
-                {c.name}
-              </span>
-            ))}
+          <div className="mb-12 flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+            <div className="flex flex-wrap justify-center gap-2 lg:justify-start">
+              {BLOG_CATEGORIES.map((c) => (
+                <span
+                  key={c.slug}
+                  className="rounded-full border border-border bg-card px-4 py-1.5 text-sm text-foreground/80"
+                >
+                  {c.name}
+                </span>
+              ))}
+              {hasCustomPosts ? (
+                <span className="rounded-full border border-border bg-card px-4 py-1.5 text-sm text-foreground/80">
+                  Atualizações
+                </span>
+              ) : null}
+            </div>
+
+            <Button asChild variant="outline" className="self-center lg:self-auto">
+              <Link to="/blog/gerenciar">
+                <PencilLine className="size-4" />
+                Gerenciar blog
+              </Link>
+            </Button>
           </div>
 
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {BLOG_POSTS.map((post, i) => (
+            {posts.map((post, i) => (
               <Reveal key={post.slug} delay={(i % 3) * 80}>
                 <Link
                   to="/blog/$slug"
