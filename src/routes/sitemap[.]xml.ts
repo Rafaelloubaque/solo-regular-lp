@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
+import { fetchPublishedBlogPosts } from "@/lib/blog-api";
 import { BLOG_POSTS } from "@/lib/site-data";
 
 // TODO: substituir pela URL do projeto quando houver nome ou domínio personalizado.
@@ -15,6 +16,10 @@ export const Route = createFileRoute("/sitemap.xml")({
   server: {
     handlers: {
       GET: async () => {
+        const blogPosts = await fetchPublishedBlogPosts().catch(() =>
+          BLOG_POSTS.map((post) => ({ slug: post.slug })),
+        );
+
         const entries: SitemapEntry[] = [
           { path: "/", changefreq: "weekly", priority: "1.0" },
           { path: "/servicos", changefreq: "monthly", priority: "0.9" },
@@ -23,7 +28,7 @@ export const Route = createFileRoute("/sitemap.xml")({
           { path: "/blog", changefreq: "weekly", priority: "0.8" },
           { path: "/contato", changefreq: "yearly", priority: "0.6" },
           { path: "/privacidade", changefreq: "yearly", priority: "0.3" },
-          ...BLOG_POSTS.map((p) => ({
+          ...blogPosts.map((p) => ({
             path: `/blog/${p.slug}`,
             changefreq: "monthly" as const,
             priority: "0.6",

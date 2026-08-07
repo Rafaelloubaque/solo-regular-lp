@@ -18,7 +18,6 @@ import { Route as CasosRouteImport } from './routes/casos'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as LinkIndexRouteImport } from './routes/Link.index'
-import { Route as BlogGerenciarRouteImport } from './routes/blog.gerenciar'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 
 const SobreRoute = SobreRouteImport.update({
@@ -66,11 +65,6 @@ const LinkIndexRoute = LinkIndexRouteImport.update({
   path: '/Link/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const BlogGerenciarRoute = BlogGerenciarRouteImport.update({
-  id: '/blog/gerenciar',
-  path: '/blog/gerenciar',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const BlogSlugRoute = BlogSlugRouteImport.update({
   id: '/blog/$slug',
   path: '/blog/$slug',
@@ -86,7 +80,6 @@ export interface FileRoutesByFullPath {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sobre': typeof SobreRoute
   '/blog/$slug': typeof BlogSlugRoute
-  '/blog/gerenciar': typeof BlogGerenciarRoute
   '/Link/': typeof LinkIndexRoute
   '/blog/': typeof BlogIndexRoute
 }
@@ -99,7 +92,6 @@ export interface FileRoutesByTo {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sobre': typeof SobreRoute
   '/blog/$slug': typeof BlogSlugRoute
-  '/blog/gerenciar': typeof BlogGerenciarRoute
   '/Link': typeof LinkIndexRoute
   '/blog': typeof BlogIndexRoute
 }
@@ -113,7 +105,6 @@ export interface FileRoutesById {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sobre': typeof SobreRoute
   '/blog/$slug': typeof BlogSlugRoute
-  '/blog/gerenciar': typeof BlogGerenciarRoute
   '/Link/': typeof LinkIndexRoute
   '/blog/': typeof BlogIndexRoute
 }
@@ -128,7 +119,6 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/sobre'
     | '/blog/$slug'
-    | '/blog/gerenciar'
     | '/Link/'
     | '/blog/'
   fileRoutesByTo: FileRoutesByTo
@@ -141,7 +131,6 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/sobre'
     | '/blog/$slug'
-    | '/blog/gerenciar'
     | '/Link'
     | '/blog'
   id:
@@ -154,7 +143,6 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/sobre'
     | '/blog/$slug'
-    | '/blog/gerenciar'
     | '/Link/'
     | '/blog/'
   fileRoutesById: FileRoutesById
@@ -168,7 +156,6 @@ export interface RootRouteChildren {
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SobreRoute: typeof SobreRoute
   BlogSlugRoute: typeof BlogSlugRoute
-  BlogGerenciarRoute: typeof BlogGerenciarRoute
   LinkIndexRoute: typeof LinkIndexRoute
   BlogIndexRoute: typeof BlogIndexRoute
 }
@@ -238,13 +225,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LinkIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/blog/gerenciar': {
-      id: '/blog/gerenciar'
-      path: '/blog/gerenciar'
-      fullPath: '/blog/gerenciar'
-      preLoaderRoute: typeof BlogGerenciarRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/blog/$slug': {
       id: '/blog/$slug'
       path: '/blog/$slug'
@@ -264,7 +244,6 @@ const rootRouteChildren: RootRouteChildren = {
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   SobreRoute: SobreRoute,
   BlogSlugRoute: BlogSlugRoute,
-  BlogGerenciarRoute: BlogGerenciarRoute,
   LinkIndexRoute: LinkIndexRoute,
   BlogIndexRoute: BlogIndexRoute,
 }

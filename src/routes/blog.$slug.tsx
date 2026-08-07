@@ -1,25 +1,40 @@
-import { useEffect, useState } from "react";
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { BLOG_POSTS, type BlogContentBlock } from "@/lib/site-data";
-import { findManagedBlogPost, type ManagedBlogPost } from "@/lib/blog-store";
+import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import type { BlogContentBlock } from "@/lib/site-data";
+import {
+  fetchPublishedBlogPost,
+  getBlogPostDate,
+  getBlogPostDescription,
+  getBlogPostImage,
+  getBlogPostTitle,
+  resolveBlogImageUrl,
+} from "@/lib/blog-api";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, CalendarDays, Clock } from "lucide-react";
 
 export const Route = createFileRoute("/blog/$slug")({
-  loader: ({ params }) => {
-    return BLOG_POSTS.find((p) => p.slug === params.slug) ?? null;
+  loader: async ({ params }) => {
+    try {
+      return await fetchPublishedBlogPost(params.slug);
+    } catch {
+      throw notFound();
+    }
   },
   head: ({ loaderData }) => {
     if (!loaderData) return {};
+    const title = getBlogPostTitle(loaderData);
+    const description = getBlogPostDescription(loaderData);
+    const date = getBlogPostDate(loaderData);
+    const image = resolveBlogImageUrl(getBlogPostImage(loaderData));
+
     return {
       meta: [
-        { title: `${loaderData.title} | Solo Regular` },
-        { name: "description", content: loaderData.excerpt },
-        { property: "og:title", content: loaderData.title },
-        { property: "og:description", content: loaderData.excerpt },
+        { title: `${title} | Solo Regular` },
+        { name: "description", content: description },
+        { property: "og:title", content: title },
+        { property: "og:description", content: description },
         { property: "og:type", content: "article" },
         { property: "og:url", content: `/blog/${loaderData.slug}` },
-        ...(loaderData.image ? [{ property: "og:image", content: loaderData.image }] : []),
+        ...(image ? [{ property: "og:image", content: image }] : []),
       ],
       links: [{ rel: "canonical", href: `/blog/${loaderData.slug}` }],
       scripts: [
@@ -28,11 +43,11 @@ export const Route = createFileRoute("/blog/$slug")({
           children: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Article",
-            headline: loaderData.title,
-            description: loaderData.excerpt,
-            datePublished: loaderData.date,
-            articleSection: loaderData.category,
-            ...(loaderData.image ? { image: loaderData.image } : {}),
+            headline: title,
+            description,
+            datePublished: date,
+            articleSection: "Blog",
+            ...(image ? { image } : {}),
             author: { "@type": "Organization", name: "Solo Regular" },
             publisher: { "@type": "Organization", name: "Solo Regular" },
           }),
@@ -99,44 +114,13 @@ function BlogContent({ block }: { block: BlogContentBlock }) {
   return <p className="text-base leading-relaxed text-foreground/90 sm:text-lg">{block.text}</p>;
 }
 
-function MissingPost() {
-  return (
-    <div className="mx-auto max-w-2xl px-4 py-24 text-center">
-      <h1 className="font-serif text-3xl text-deep">Artigo não encontrado</h1>
-      <p className="mt-3 text-muted-foreground">
-        O conteúdo que você procura não existe ou foi movido.
-      </p>
-      <Button asChild className="mt-6">
-        <Link to="/blog">Voltar ao blog</Link>
-      </Button>
-    </div>
-  );
-}
-
 function PostPage() {
-  const loaderPost = Route.useLoaderData();
-  const { slug } = Route.useParams();
-  const [post, setPost] = useState<ManagedBlogPost | null>(() =>
-    loaderPost ? { ...loaderPost, source: "fixed" } : null,
-  );
-  const [ready, setReady] = useState(Boolean(loaderPost));
-
-  useEffect(() => {
-    setPost(findManagedBlogPost(slug));
-    setReady(true);
-  }, [slug]);
-
-  if (!post) {
-    if (!ready) {
-      return (
-        <div className="mx-auto max-w-2xl px-4 py-24 text-center text-muted-foreground">
-          Carregando artigo...
-        </div>
-      );
-    }
-
-    return <MissingPost />;
-  }
+  const post = Route.useLoaderData();
+  const title = getBlogPostTitle(post);
+  const description = getBlogPostDescription(post);
+  const date = getBlogPostDate(post);
+  const image = resolveBlogImageUrl(getBlogPostImage(post));
+  const content = post.content ?? [];
 
   const ctaLabel = post.ctaLabel ?? "Solicitar Análise Gratuita";
   const ctaHref = post.ctaUrl ?? "/contato";
@@ -154,32 +138,29 @@ function PostPage() {
             <ArrowLeft className="size-4" />
             Blog
           </Link>
-          <p className="mt-6 text-xs font-semibold uppercase tracking-[0.2em] text-primary">
-            {post.category}
-          </p>
-          <h1 className="mt-3 font-serif text-3xl leading-tight text-deep sm:text-4xl">
-            {post.title}
-          </h1>
+          <p className="mt-6 text-xs font-semibold uppercase tracking-[0.2em] text-primary">Blog</p>
+          <h1 className="mt-3 font-serif text-3xl leading-tight text-deep sm:text-4xl">{title}</h1>
+          {description ? (
+            <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
+              {description}
+            </p>
+          ) : null}
           <div className="mt-5 flex items-center gap-4 text-sm text-muted-foreground">
             <span className="flex items-center gap-1.5">
               <CalendarDays className="size-4" />
-              {formatDate(post.date)}
+              {formatDate(date)}
             </span>
             <span className="flex items-center gap-1.5">
               <Clock className="size-4" />
-              {post.readingTime}
+              {post.readingTime || "Leitura rápida"}
             </span>
           </div>
         </div>
 
-        {post.image ? (
+        {image ? (
           <div className="relative mx-auto max-w-5xl px-4 pb-10 sm:px-6 lg:px-8">
             <div className="aspect-[16/9] overflow-hidden rounded-2xl border border-border bg-muted shadow-elegant">
-              <img
-                src={post.image}
-                alt={post.imageAlt ?? ""}
-                className="h-full w-full object-cover"
-              />
+              <img src={image} alt={post.imageAlt ?? ""} className="h-full w-full object-cover" />
             </div>
           </div>
         ) : null}
@@ -187,7 +168,7 @@ function PostPage() {
 
       <div className="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="space-y-6">
-          {post.content.map((block, i) => (
+          {content.map((block, i) => (
             <BlogContent key={i} block={block} />
           ))}
         </div>
