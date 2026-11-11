@@ -8,6 +8,7 @@ import {
   Linkedin,
   Mail,
   MessageCircle,
+  Navigation,
   ShieldCheck,
 } from "lucide-react";
 import { motion } from "framer-motion";
@@ -46,6 +47,12 @@ const primaryLinks = [
     helper: "Serviços, casos e conteúdo",
     url: "/",
     icon: Globe,
+  },
+  {
+    label: "Faça uma Avaliação",
+    helper: "Deixe sua Avaliação sobre a Solo Regular",
+    url: "https://g.page/r/CUJWgVCpjaS7EAE/review",
+    icon: Navigation,
   },
 ];
 
