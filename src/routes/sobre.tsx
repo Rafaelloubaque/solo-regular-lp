@@ -3,7 +3,7 @@ import { PageHero } from "@/components/PageHero";
 import { Reasons } from "@/components/sections/Reasons";
 import { ContactCta } from "@/components/sections/ContactCta";
 import { Reveal } from "@/components/Reveal";
-import { Compass, Scale } from "lucide-react";
+import { Compass, Eye, HeartHandshake, Scale, Target } from "lucide-react";
 import { TIMELINE } from "@/lib/site-data";
 import adriana from "@/assets/adriana.jpeg";
 import ronaldo from "@/assets/ronaldo.jpeg";
@@ -47,6 +47,23 @@ const PARTNERS = [
     bio: "À frente do relacionamento com cartórios, prefeituras e órgãos públicos, Ronaldo conduz as tratativas institucionais e garante a fluidez dos processos mais complexos.",
   },
 ];
+
+const PURPOSES = [
+  {
+    title: "Nossa missão",
+    icon: Target,
+    description:
+      "Transformar realidades imobiliárias por meio de soluções técnicas, jurídicas e urbanísticas, promovendo a regularização de imóveis, a segurança jurídica, a valorização patrimonial e o desenvolvimento urbano responsável, com sensibilidade às necessidades das pessoas e compromisso com a sociedade.",
+  },
+  {
+    title: "Nossa visão",
+    icon: Eye,
+    description:
+      "Ser referência em desenvolvimento urbano e regularização fundiária e imobiliária, reconhecida pela excelência técnica, segurança jurídica, credibilidade e capacidade de transformar desafios em soluções, contribuindo para cidades mais organizadas, patrimônios valorizados e uma sociedade mais justa.",
+  },
+];
+
+const VALUES = ["Sensibilidade", "Segurança", "Seriedade", "Solução", "Sinergia", "Sociedade"];
 
 function SobrePage() {
   return (
@@ -137,6 +154,64 @@ function SobrePage() {
                 </article>
               </Reveal>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-background py-20 lg:py-28">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <Reveal>
+            <div className="mx-auto mb-14 max-w-2xl text-center">
+              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.25em] text-primary">
+                O que nos orienta
+              </p>
+              <h2 className="font-serif text-3xl text-deep sm:text-4xl">Missão, visão e valores</h2>
+            </div>
+          </Reveal>
+
+          <div className="grid gap-6 lg:grid-cols-2">
+            {PURPOSES.map((item, i) => (
+              <Reveal key={item.title} delay={i * 100}>
+                <article className="h-full rounded-3xl border border-border bg-card p-7 shadow-sm sm:p-9">
+                  <div className="flex size-12 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+                    <item.icon className="size-6" aria-hidden="true" />
+                  </div>
+                  <h3 className="mt-6 font-serif text-2xl text-deep">{item.title}</h3>
+                  <p className="mt-4 leading-relaxed text-muted-foreground">{item.description}</p>
+                </article>
+              </Reveal>
+            ))}
+
+            <Reveal delay={200} className="lg:col-span-2">
+              <article className="overflow-hidden rounded-3xl border border-primary/20 bg-primary/5 p-7 sm:p-9 lg:p-10">
+                <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
+                  <div>
+                    <div className="flex size-12 items-center justify-center rounded-2xl bg-primary text-primary-foreground">
+                      <HeartHandshake className="size-6" aria-hidden="true" />
+                    </div>
+                    <h3 className="mt-6 font-serif text-2xl text-deep">Nossos valores</h3>
+                    <p className="mt-4 leading-relaxed text-muted-foreground">
+                      Buscamos ter, nas relações com nossos clientes, uma ligação cada vez mais
+                      afinada e produtiva, baseada nos nossos 6 Ss.
+                    </p>
+                  </div>
+
+                  <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3" aria-label="Os 6 Ss">
+                    {VALUES.map((value, i) => (
+                      <li
+                        key={value}
+                        className="rounded-2xl border border-primary/15 bg-background px-4 py-5 text-center shadow-sm"
+                      >
+                        <span className="block font-serif text-2xl text-primary" aria-hidden="true">
+                          {i + 1}
+                        </span>
+                        <span className="mt-1 block text-sm font-semibold text-deep">{value}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </article>
+            </Reveal>
           </div>
         </div>
       </section>
