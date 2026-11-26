@@ -169,9 +169,9 @@ function SobrePage() {
             </div>
           </Reveal>
 
-          <div className="grid gap-6 lg:grid-cols-2">
+          <div className="grid gap-6 lg:grid-cols-3">
             {PURPOSES.map((item, i) => (
-              <Reveal key={item.title} delay={i * 100}>
+              <Reveal key={item.title} delay={i * 100} className="h-full">
                 <article className="h-full rounded-3xl border border-border bg-card p-7 shadow-sm sm:p-9">
                   <div className="flex size-12 items-center justify-center rounded-2xl bg-primary/10 text-primary">
                     <item.icon className="size-6" aria-hidden="true" />
@@ -182,11 +182,11 @@ function SobrePage() {
               </Reveal>
             ))}
 
-            <Reveal delay={200} className="lg:col-span-2">
-              <article className="overflow-hidden rounded-3xl border border-primary/20 bg-primary/5 p-7 sm:p-9 lg:p-10">
-                <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
+            <Reveal delay={200} className="h-full">
+              <article className="h-full overflow-hidden rounded-3xl border border-border bg-card p-7 shadow-sm sm:p-9">
+                <div className="space-y-6">
                   <div>
-                    <div className="flex size-12 items-center justify-center rounded-2xl bg-primary text-primary-foreground">
+                    <div className="flex size-12 items-center justify-center rounded-2xl bg-primary/10 text-primary">
                       <HeartHandshake className="size-6" aria-hidden="true" />
                     </div>
                     <h3 className="mt-6 font-serif text-2xl text-deep">Nossos valores</h3>
@@ -196,16 +196,13 @@ function SobrePage() {
                     </p>
                   </div>
 
-                  <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3" aria-label="Os 6 Ss">
-                    {VALUES.map((value, i) => (
+                  <ul className="grid grid-cols-2 gap-2" aria-label="Os 6 Ss">
+                    {VALUES.map((value) => (
                       <li
                         key={value}
-                        className="rounded-2xl border border-primary/15 bg-background px-4 py-5 text-center shadow-sm"
+                        className="rounded-xl border border-primary/15 bg-primary/5 px-3 py-3 text-center text-sm font-semibold text-deep"
                       >
-                        <span className="block font-serif text-2xl text-primary" aria-hidden="true">
-                          {i + 1}
-                        </span>
-                        <span className="mt-1 block text-sm font-semibold text-deep">{value}</span>
+                        {value}
                       </li>
                     ))}
                   </ul>
